@@ -6,22 +6,39 @@ using Random = System.Random;
 
 public class RespawnManager : MonoBehaviour
 {
+    
+    public static List<GameObject> GlobalPlayerList;
+    
     [SerializeField] private GameObject[] playerPrefabs;
     private List<GameObject> _activePlayers;
     private List<GameObject> _respawnerList;
     // Start is called before the first frame update
     private void Start()
     {
+        InitializeGlobalPlayerList();
         _activePlayers = new List<GameObject>();
         _respawnerList = new List<GameObject>();
         foreach (Transform rsTransform in gameObject.transform)
         {
             _respawnerList.Add(rsTransform.gameObject);
         }
-
+        
         foreach (GameObject playerPrefab in playerPrefabs)
         {
+            GlobalPlayerList.Add(playerPrefab);
+        }
+        
+        foreach (GameObject playerPrefab in GlobalPlayerList)
+        {
             RespawnPlayer(Instantiate(playerPrefab));
+        }
+    }
+
+    private void InitializeGlobalPlayerList()
+    {
+        if (GlobalPlayerList == null)
+        {
+            GlobalPlayerList = new List<GameObject>();
         }
     }
 

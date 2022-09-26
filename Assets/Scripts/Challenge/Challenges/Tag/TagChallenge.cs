@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Tag : TimedChallenge
+public class TagChallenge : TimedChallenge
 {
     private void Start()
     {

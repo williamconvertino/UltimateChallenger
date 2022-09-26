@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,7 +17,15 @@ public class GameManager : MonoBehaviour
     private GameObject _currentChallenge;
     private Challenge _currentChallengeScript;
     private float challengeDelayTimer;
-    
+
+    private void Start()
+    {
+        foreach (GameObject player in players)
+        {
+            RespawnManager.GlobalPlayerList.Add(player);   
+        }
+    }
+
     private void Update()
     {
         UpdateCurrentChallenge();
@@ -25,7 +34,7 @@ public class GameManager : MonoBehaviour
     #region Challenges
     private void UpdateCurrentChallenge()
     {
-        if (_currentChallengeScript.IsChallengeOver)
+        if (_currentChallengeScript != null && _currentChallengeScript.IsChallengeOver)
         {
             Destroy(_currentChallenge);
             SetNewChallenge();
