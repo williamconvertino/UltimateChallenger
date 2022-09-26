@@ -7,7 +7,7 @@ public class TimedChallengeDevScript : ChallengeDevScript
 
     protected override void Start()
     {
-        TimedChallenge challengeScript = gameObject.GetComponent<TimedChallenge>();
-        challengeScript.Init(players, timer);
+        SpawnPlayers();
+        gameObject.GetComponent<TimedChallenge>().Init(ActivePlayers.ToArray(), timer);
     }
 }
