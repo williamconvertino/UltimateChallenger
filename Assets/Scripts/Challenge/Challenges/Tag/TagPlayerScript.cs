@@ -1,12 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-public class TagPlayerScript : MonoBehaviour
+public class TagPlayerScript : ChallengePlayerScript
 {
     public bool Tagged { private set; get; } = false;
     private float _totalInvincibilityTime = 2.0f;
     private float _invincibilityTimer = 0;
 
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
         if (_invincibilityTimer > 0)
@@ -29,7 +33,7 @@ public class TagPlayerScript : MonoBehaviour
     //     }
     // }
 
-    private void UnTag()
+    public void UnTag()
     {
         Tagged = false;
         _invincibilityTimer = _totalInvincibilityTime;
@@ -38,5 +42,10 @@ public class TagPlayerScript : MonoBehaviour
     public bool Tag()
     {
         return Tagged = _invincibilityTimer <= 0;
+    }
+
+    public override void Cleanup()
+    {
+        
     }
 }

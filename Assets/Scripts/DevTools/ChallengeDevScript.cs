@@ -4,9 +4,11 @@ using UnityEngine;
 public class ChallengeDevScript : UnityEngine.MonoBehaviour
 {
     public GameObject[] players;
+    public GameObject stage;
 
     protected virtual void Start()
     {
-        gameObject.GetComponent<Challenge>().Init(players);
+        GetComponentInChildren<Challenge>().Init(players);
+        GetComponent<RespawnManager>().Init(players, stage);
     }
 }

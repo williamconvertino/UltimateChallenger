@@ -5,27 +5,11 @@ using Random = UnityEngine.Random;
 
 public class TagChallenge : TimedChallenge
 {
-    protected override void Start()
+    public override void Init(GameObject[] players)
     {
-        base.Start();
-        foreach (GameObject player in Players)
-        {
-            player.AddComponent<TagPlayerScript>();
-        }
-        
+        base.Init(players);
+        AddScriptToPlayers<TagPlayerScript>();
         TagPlayerScript initialTagger = Players[Random.Range(0, Players.Length)].GetComponent<TagPlayerScript>();
         initialTagger.Tag();
-    }
-
-    protected override void Cleanup()
-    {
-        foreach (GameObject player in Players)
-        {
-            if (player.GetComponent<TagPlayerScript>().Tagged)
-            {
-                Console.WriteLine(player + " Loses");
-            }
-            Destroy(player.GetComponent<TagPlayerScript>());
-        }
     }
 }
