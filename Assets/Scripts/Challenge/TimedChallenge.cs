@@ -5,14 +5,12 @@ using UnityEngine;
 
 public abstract class TimedChallenge : Challenge
 {
+    private float timer;
     
-    private float challengeTime;
-    private float timeRemaining;
-    
-    public void Init(GameObject[] players, float time = 0)
+    public void Init(GameObject[] players, float challengeTime = Mathf.Infinity)
     {
         base.Init(players);
-        challengeTime = time;
+        timer = challengeTime;
     }
 
     private void Update()
@@ -22,8 +20,8 @@ public abstract class TimedChallenge : Challenge
     
     private void UpdateTimer()
     {   
-        timeRemaining -= Time.deltaTime;
-        if (timeRemaining <= 0)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
             IsChallengeOver = true;
         }

@@ -84,7 +84,6 @@ public class RespawnManager : MonoBehaviour
         {
             float nearestPlayerDistance = Mathf.Infinity;
             Vector2 rsPos = rs.transform.position;
-            print(rsPos);
             foreach (GameObject player in _activePlayers)
             {
                 float distance = Vector2.Distance(rsPos, player.transform.position);

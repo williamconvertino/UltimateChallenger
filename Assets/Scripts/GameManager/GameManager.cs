@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
-using Unity.VisualScripting;
+﻿
+using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
      {
           InitializeStage();
           InitializeRespawnManager();
+          StartCoroutine(LoadNewChallenge());
+     }
+
+     private void Update()
+     {
+          UpdateChallenge();
      }
 
      #endregion
@@ -32,13 +38,40 @@ public class GameManager : MonoBehaviour
      }
 
      #endregion
-     
+
      #region Challenges
 
-     [Header("Challenge Settings")] [SerializeField] private GameObject[] challengePrefabs;
+     [Header("Challenge Settings")]
+     [SerializeField] private GameObject[] challengePrefabs;
+     [SerializeField] private float timeBetweenChallenges;
+     private GameObject currentChallenge;
+     private Challenge currentChallengeScript;
 
-     #endregion
+     private void UpdateChallenge()
+     {
+          if (currentChallengeScript != null && currentChallengeScript.IsChallengeOver)
+          {
+               StartCoroutine(LoadNewChallenge());
+;         }
+     }
      
+     private IEnumerator LoadNewChallenge()
+     {
+          if (currentChallenge != null)
+          { 
+               Destroy(currentChallenge);
+               currentChallenge = null;
+               currentChallengeScript = null;
+          }
+          yield return new WaitForSeconds(timeBetweenChallenges);
+          currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)]);
+          currentChallengeScript = currentChallenge.GetComponent<Challenge>();
+          currentChallengeScript.Init(playerPrefabs);
+     }
+     
+     
+     #endregion
+
      #region Stage
 
      [Header("Stage Settings")]
