@@ -5,8 +5,9 @@ using Random = UnityEngine.Random;
 
 public class TagChallenge : TimedChallenge
 {
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         foreach (GameObject player in Players)
         {
             player.AddComponent<TagPlayerScript>();

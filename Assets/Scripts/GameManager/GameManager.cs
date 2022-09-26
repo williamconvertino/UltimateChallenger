@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour
                currentChallengeScript = null;
           }
           yield return new WaitForSeconds(timeBetweenChallenges);
-          print("Starting new challenge");
           currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
           currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
           currentChallengeScript.Init(_playerList);

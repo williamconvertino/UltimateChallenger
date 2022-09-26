@@ -9,22 +9,21 @@ public abstract class TimedChallenge : Challenge
 
     private float timer;
 
-    private void Start()
+    protected virtual void Start()
     {
         timer = challengeTime;
     }
     
-    private void Update()
+    protected virtual void Update()
     {
         UpdateTimer();
     }
     
     private void UpdateTimer()
-    {   
+    {
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            print("Challenge over");
             Cleanup();
             IsChallengeOver = true;
         }
