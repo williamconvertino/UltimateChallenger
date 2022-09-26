@@ -1,21 +1,22 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RespawnManager : MonoBehaviour
 {
     #region Core
 
-    private GameObject[] _playerPrefabs;
+    private GameObject[] _allPlayers;
     private List<GameObject> _activePlayers;
-
+    
     public void Init(GameObject[] players, GameObject stage)
     {
-        _playerPrefabs = players;
-        _activePlayers = new List<GameObject>();
+        _allPlayers = players;
+        _activePlayers = new List<GameObject>(players);
         SetRespawners(stage);
-        InitializePlayers();
         SpawnAllPlayers();
     }
 
@@ -27,17 +28,10 @@ public class RespawnManager : MonoBehaviour
     #endregion
 
     #region Spawning
-
-    private void InitializePlayers()
-    {
-        foreach (GameObject player in _playerPrefabs)
-        {
-            _activePlayers.Add(Instantiate(player, transform)); 
-        }
-    }
+    
     private void SpawnAllPlayers()
     {
-        foreach (GameObject player in _activePlayers.ToList())
+        foreach (GameObject player in _allPlayers)
         {
             SpawnPlayer(player);
         }
@@ -49,19 +43,7 @@ public class RespawnManager : MonoBehaviour
         Vector2 position = GetBestRespawner().GetUsableLocation();
         player.transform.position = position;
         _activePlayers.Add(player);
-    }
-
-    //Deletes all the instantiated players, removing them from the game.
-    private void ClearAllPlayers()
-    {
-        foreach (GameObject player in _activePlayers)
-        {
-            if (player != null)
-            {
-                Destroy(player);
-            }
-        }
-        _activePlayers.Clear();
+        player.SetActive(true);
     }
 
     #endregion
@@ -107,7 +89,7 @@ public class RespawnManager : MonoBehaviour
 
     private void CheckPlayerRespawn()
     {
-        foreach (GameObject player in _activePlayers.ToList())
+        foreach (GameObject player in _allPlayers)
         {
             if (PlayerNeedsRespawn(player))
             {

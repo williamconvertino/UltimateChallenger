@@ -24,6 +24,8 @@ public abstract class TimedChallenge : Challenge
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
+            print(""Challenge over);
+            Cleanup();
             IsChallengeOver = true;
         }
     }

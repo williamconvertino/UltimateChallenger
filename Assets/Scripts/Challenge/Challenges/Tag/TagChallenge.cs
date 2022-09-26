@@ -7,7 +7,6 @@ public class TagChallenge : TimedChallenge
 {
     private void Start()
     {
-        Console.WriteLine("Starting Tag");
         foreach (GameObject player in Players)
         {
             player.AddComponent<TagPlayerScript>();

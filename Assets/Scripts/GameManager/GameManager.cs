@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
      private void Start()
      {
           InitializeStage();
+          InitializePlayers();
           InitializeRespawnManager();
           StartCoroutine(LoadNewChallenge());
      }
@@ -25,7 +27,18 @@ public class GameManager : MonoBehaviour
      #region Players
 
      [Header("Player Settings")] [SerializeField] private GameObject[] playerPrefabs;
+     private GameObject[] _playerList;
 
+     private void InitializePlayers()
+     {
+          _playerList = new GameObject[playerPrefabs.Length];
+          for (int i = 0; i < playerPrefabs.Length; i++)
+          {
+               _playerList[i] = Instantiate(playerPrefabs[i], transform);
+          }
+     }
+     
+     
      #endregion
 
      #region Respawn
@@ -34,7 +47,7 @@ public class GameManager : MonoBehaviour
      private void InitializeRespawnManager()
      {
           _respawnManager = gameObject.AddComponent<RespawnManager>();
-          _respawnManager.Init(playerPrefabs, _currentStage);
+          _respawnManager.Init(_playerList, _currentStage);
      }
 
      #endregion
@@ -64,9 +77,10 @@ public class GameManager : MonoBehaviour
                currentChallengeScript = null;
           }
           yield return new WaitForSeconds(timeBetweenChallenges);
+          print("Starting new challenge");
           currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
           currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
-          currentChallengeScript.Init(playerPrefabs);
+          currentChallengeScript.Init(_playerList);
      }
      
      

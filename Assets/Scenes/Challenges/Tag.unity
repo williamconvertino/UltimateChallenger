@@ -153,11 +153,11 @@ PrefabInstance:
     - target: {fileID: 6227080099171115732, guid: b19641a02297b4d4c8dcd65cb9762fb3, type: 3}
       propertyPath: playerPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 483643879824233126, guid: b2ac9ab3278599746971bf88a12db3c9, type: 3}
+      objectReference: {fileID: 2897713024843735645, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
     - target: {fileID: 6227080099171115732, guid: b19641a02297b4d4c8dcd65cb9762fb3, type: 3}
       propertyPath: playerPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 7736979715542037117, guid: bc3787bf2aad8af46936987dba989c59, type: 3}
+      objectReference: {fileID: 2187827181635767487, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
     - target: {fileID: 6227080099171115732, guid: b19641a02297b4d4c8dcd65cb9762fb3, type: 3}
       propertyPath: challengePrefabs.Array.data[0]
       value: 
