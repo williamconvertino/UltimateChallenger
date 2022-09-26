@@ -5,14 +5,15 @@ using UnityEngine;
 
 public abstract class TimedChallenge : Challenge
 {
+    [SerializeField] private float challengeTime = Mathf.Infinity;
+
     private float timer;
-    
-    public void Init(GameObject[] players, float challengeTime = Mathf.Infinity)
+
+    private void Start()
     {
-        base.Init(players);
         timer = challengeTime;
     }
-
+    
     private void Update()
     {
         UpdateTimer();

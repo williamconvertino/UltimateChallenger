@@ -139,6 +139,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7158010453204480358, guid: c8c16c003ec77764fa58209c43e3e9ca, type: 3}
     - target: {fileID: 6227080099171115732, guid: b19641a02297b4d4c8dcd65cb9762fb3, type: 3}
+      propertyPath: timeBetweenChallenges
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227080099171115732, guid: b19641a02297b4d4c8dcd65cb9762fb3, type: 3}
       propertyPath: playerPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}

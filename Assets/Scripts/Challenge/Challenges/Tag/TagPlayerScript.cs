@@ -15,19 +15,19 @@ public class TagPlayerScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject otherPlayer = collision.gameObject;
-        if (Tagged && otherPlayer != null && collision.gameObject.CompareTag("Player"))
-        {
-            bool tagSuccessful = otherPlayer.GetComponent<TagPlayerScript>().Tag();
-
-            if (tagSuccessful)
-            {
-                UnTag();
-            }
-        }
-    }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     GameObject otherPlayer = collision.gameObject;
+    //     if (Tagged && otherPlayer != null && collision.gameObject.CompareTag("Player"))
+    //     {
+    //         bool tagSuccessful = otherPlayer.GetComponent<TagPlayerScript>().Tag();
+    //
+    //         if (tagSuccessful)
+    //         {
+    //             UnTag();
+    //         }
+    //     }
+    // }
 
     private void UnTag()
     {

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
      [SerializeField] private GameObject[] challengePrefabs;
      [SerializeField] private float timeBetweenChallenges;
      private GameObject currentChallenge;
-     private Challenge currentChallengeScript;
+     private TimedChallenge currentChallengeScript;
 
      private void UpdateChallenge()
      {
@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
                currentChallengeScript = null;
           }
           yield return new WaitForSeconds(timeBetweenChallenges);
-          currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)]);
-          currentChallengeScript = currentChallenge.GetComponent<Challenge>();
+          currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
+          currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
           currentChallengeScript.Init(playerPrefabs);
      }
      

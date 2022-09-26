@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 483643879824233126, guid: b2ac9ab3278599746971bf88a12db3c9, type: 3}
       propertyPath: m_Name
-      value: Coop Player 2
+      value: Coop Player 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 687381593815891414, guid: b2ac9ab3278599746971bf88a12db3c9, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
