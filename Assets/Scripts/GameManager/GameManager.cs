@@ -1,34 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
-using Minigames;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
 
-    [Header("Stage info")]
-    //The main stage of the game.
-    [SerializeField] private GameObject mainStage;
+    [Header("Players")]
     [SerializeField] private GameObject[] players;
-
-    [Header("Minigames")]
-    //Stores GameObjects with all the possible minigames.
-    //minigames_nocoop represents games that are not compatible with coop mode.
-    [SerializeField] private Minigame[] minigames;
-    [SerializeField] private Minigame[] minigames_nocoop;
-
-    //The active stage.
-    private Minigame currentMinigame;
-
-    //Switches the current minigame to be the given stage.
-    public void SwitchMinigame(Minigame minigame)
+    
+    [Header("Challenges")]
+    [SerializeField] private GameObject[] challenges;
+    [SerializeField] private float challengeDelay;
+    
+    private GameObject _currentChallenge;
+    private Challenge _currentChallengeScript;
+    private float challengeDelayTimer;
+    
+    private void Update()
     {
-        if (currentMinigame != null)
-        {
-            Destroy(currentMinigame);   
-        }
-        currentMinigame = Instantiate(minigame);
-        currentMinigame.Initialize(players);
+        UpdateCurrentChallenge();
     }
+
+    #region Challenges
+    private void UpdateCurrentChallenge()
+    {
+        if (_currentChallengeScript.IsChallengeOver)
+        {
+            Destroy(_currentChallenge);
+            SetNewChallenge();
+        }
+    }
+
+    private void SetNewChallenge()
+    {
+        _currentChallenge = Instantiate(challenges[Random.Range(0,challenges.Length)]);
+        _currentChallengeScript = _currentChallenge.GetComponent<Challenge>();
+        _currentChallengeScript.Init(players);
+    }
+    #endregion
     
 }
