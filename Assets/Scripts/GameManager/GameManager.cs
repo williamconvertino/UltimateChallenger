@@ -6,47 +6,51 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+     #region Core
 
-    [Header("Players")]
-    [SerializeField] private GameObject[] players;
-    
-    [Header("Challenges")]
-    [SerializeField] private GameObject[] challenges;
-    [SerializeField] private float challengeDelay;
-    
-    private GameObject _currentChallenge;
-    private Challenge _currentChallengeScript;
-    private float challengeDelayTimer;
+     private void Start()
+     {
+          InitializeStage();
+          InitializeRespawnManager();
+     }
 
-    private void Start()
-    {
-        foreach (GameObject player in players)
-        {
-            RespawnManager.GlobalPlayerList.Add(player);   
-        }
-    }
+     #endregion
+     
+     #region Players
 
-    private void Update()
-    {
-        UpdateCurrentChallenge();
-    }
+     [Header("Player Settings")] [SerializeField] private GameObject[] playerPrefabs;
 
-    #region Challenges
-    private void UpdateCurrentChallenge()
-    {
-        if (_currentChallengeScript != null && _currentChallengeScript.IsChallengeOver)
-        {
-            Destroy(_currentChallenge);
-            SetNewChallenge();
-        }
-    }
+     #endregion
 
-    private void SetNewChallenge()
-    {
-        _currentChallenge = Instantiate(challenges[Random.Range(0,challenges.Length)]);
-        _currentChallengeScript = _currentChallenge.GetComponent<Challenge>();
-        _currentChallengeScript.Init(players);
-    }
-    #endregion
-    
+     #region Respawn
+
+     private RespawnManager _respawnManager; 
+     private void InitializeRespawnManager()
+     {
+          _respawnManager = gameObject.AddComponent<RespawnManager>();
+          _respawnManager.Init(playerPrefabs, _currentStage);
+     }
+
+     #endregion
+     
+     #region Challenges
+
+     [Header("Challenge Settings")] [SerializeField] private GameObject[] challengePrefabs;
+
+     #endregion
+     
+     #region Stage
+
+     [Header("Stage Settings")]
+     [SerializeField] private GameObject stage;
+
+     private GameObject _currentStage;
+
+     private void InitializeStage()
+     {
+          _currentStage = Instantiate(stage, transform);
+     }
+
+     #endregion
+
 }

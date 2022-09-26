@@ -1,64 +1,90 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using Random = System.Random;
 
 public class RespawnManager : MonoBehaviour
 {
-    
-    public static List<GameObject> GlobalPlayerList;
-    
-    [SerializeField] private GameObject[] playerPrefabs;
+    #region Core
+
+    private GameObject[] _playerPrefabs;
     private List<GameObject> _activePlayers;
-    private List<GameObject> _respawnerList;
-    // Start is called before the first frame update
-    private void Start()
+
+    public void Init(GameObject[] players, GameObject stage)
     {
-        InitializeGlobalPlayerList();
+        _playerPrefabs = players;
         _activePlayers = new List<GameObject>();
-        _respawnerList = new List<GameObject>();
-        foreach (Transform rsTransform in gameObject.transform)
-        {
-            _respawnerList.Add(rsTransform.gameObject);
-        }
-        
-        foreach (GameObject playerPrefab in playerPrefabs)
-        {
-            GlobalPlayerList.Add(playerPrefab);
-        }
-        
-        foreach (GameObject playerPrefab in GlobalPlayerList)
-        {
-            RespawnPlayer(Instantiate(playerPrefab));
-        }
+        SetRespawners(stage);
+        InitializePlayers();
+        SpawnAllPlayers();
     }
 
-    private void InitializeGlobalPlayerList()
+    private void Update()
     {
-        if (GlobalPlayerList == null)
+        CheckPlayerRespawn();
+    }
+
+    #endregion
+
+    #region Spawning
+
+    private void InitializePlayers()
+    {
+        foreach (GameObject player in _playerPrefabs)
         {
-            GlobalPlayerList = new List<GameObject>();
+            _activePlayers.Add(Instantiate(player, transform)); 
+        }
+    }
+    private void SpawnAllPlayers()
+    {
+        foreach (GameObject player in _activePlayers.ToList())
+        {
+            SpawnPlayer(player);
         }
     }
 
-    private void RespawnPlayer(GameObject player)
+    private void SpawnPlayer(GameObject player)
     {
         _activePlayers.Remove(player);
-        player.transform.position = GetBestRespawner().GetComponent<Respawner>().GetUsableLocation();
+        Vector2 position = GetBestRespawner().GetUsableLocation();
+        player.transform.position = position;
         _activePlayers.Add(player);
     }
 
-    private GameObject GetBestRespawner()
+    //Deletes all the instantiated players, removing them from the game.
+    private void ClearAllPlayers()
     {
-        
-        GameObject bestRespawner = _respawnerList[new Random().Next(_respawnerList.Count)];
+        foreach (GameObject player in _activePlayers)
+        {
+            if (player != null)
+            {
+                Destroy(player);
+            }
+        }
+        _activePlayers.Clear();
+    }
+
+    #endregion
+    
+    #region Respawners
+    private Respawner[] _respawners;
+
+    private void SetRespawners(GameObject stage)
+    {
+        _respawners = stage.GetComponentsInChildren<Respawner>();
+    }
+    
+    //Finds the respawner whose nearest player is the greatest distance away.
+    private Respawner GetBestRespawner()
+    {
+        Respawner bestRespawner = _respawners[Random.Range(0,_respawners.Length)];
         float bestNearestPlayerDistance = 0;
         
-        foreach (GameObject rs in _respawnerList)
+        foreach (Respawner rs in _respawners)
         {
             float nearestPlayerDistance = Mathf.Infinity;
             Vector2 rsPos = rs.transform.position;
+            print(rsPos);
             foreach (GameObject player in _activePlayers)
             {
                 float distance = Vector2.Distance(rsPos, player.transform.position);
@@ -74,30 +100,27 @@ public class RespawnManager : MonoBehaviour
                 bestRespawner = rs;
             }
         }
-
         return bestRespawner;
-
     }
-    
-    private void Update()
+    #endregion
+
+    #region RespawnChecking
+
+    private void CheckPlayerRespawn()
     {
-        List<GameObject> deadPlayers = new List<GameObject>();
-        foreach (GameObject player in _activePlayers)
+        foreach (GameObject player in _activePlayers.ToList())
         {
-            if (!IsPlayerAlive(player))
+            if (PlayerNeedsRespawn(player))
             {
-                deadPlayers.Add(player);
+                SpawnPlayer(player);
             }
         }
-
-        foreach (GameObject player in deadPlayers)
-        {
-            RespawnPlayer(player);
-        }
     }
 
-    private bool IsPlayerAlive(GameObject player)
+    private bool PlayerNeedsRespawn(GameObject player)
     {
-        return player.transform.position.y > -8;
+        return player.transform.position.y <= -5;
     }
+
+    #endregion
 }

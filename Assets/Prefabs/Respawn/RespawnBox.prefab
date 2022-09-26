@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8548932488576655485}
   - component: {fileID: 5662841059722077151}
   m_Layer: 0
-  m_Name: Respawn Area
+  m_Name: RespawnBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 1
-  height: 1
+  height: 0.5

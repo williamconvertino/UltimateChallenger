@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 public class Respawner : MonoBehaviour
 {
@@ -10,7 +8,9 @@ public class Respawner : MonoBehaviour
 
     public Vector2 GetUsableLocation()
     {
-        return transform.position + Vector3.up * 0.5f ;
+        float wb2 = width / 2.0f;
+        Vector2 position = transform.position;
+        return new Vector2(position.x + Random.Range(-wb2, wb2), position.y);
     }
 
     private void OnDrawGizmos()
