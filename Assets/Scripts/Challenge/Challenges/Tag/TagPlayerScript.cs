@@ -22,14 +22,12 @@ public class TagPlayerScript : ChallengePlayerScript
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void OnPlayerCollision(GameObject other)
     {
-        print("Collision");
-        GameObject otherPlayer = collision.gameObject;
-        if (Tagged && otherPlayer != null && collision.gameObject.CompareTag("Player"))
+        if (Tagged)
         {
-            bool tagSuccessful = otherPlayer.GetComponent<TagPlayerScript>().Tag();
-    
+            bool tagSuccessful = other.GetComponent<TagPlayerScript>().Tag();
+            print(tagSuccessful);
             if (tagSuccessful)
             {
                 UnTag();
