@@ -7,6 +7,7 @@ public abstract class Challenge : MonoBehaviour
     public bool IsChallengeOver { protected set; get; } = false;
     protected GameObject[] Players;
     public virtual void Init(GameObject[] players)
+    
     {
         Players = players;
     }
@@ -15,7 +16,7 @@ public abstract class Challenge : MonoBehaviour
     {
         foreach (GameObject player in Players)
         {
-            player.AddComponent<T>();
+            player.AddComponent<T>().Init();
         }   
     }
     protected virtual void Cleanup()
