@@ -12,4 +12,10 @@ public class TagChallenge : TimedChallenge
         TagPlayerScript initialTagger = Players[Random.Range(0, Players.Length)].GetComponent<TagPlayerScript>();
         initialTagger.Tag();
     }
+
+    protected override void Cleanup()
+    {
+        base.Cleanup();
+        
+    }
 }

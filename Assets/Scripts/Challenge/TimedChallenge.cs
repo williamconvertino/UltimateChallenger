@@ -5,20 +5,27 @@ using UnityEngine;
 
 public abstract class TimedChallenge : Challenge
 {
-    [SerializeField] private float challengeTime = Mathf.Infinity;
 
-    private float timer;
+    #region Initialization
 
-    protected virtual void Start()
+    public override void Init(GameObject[] players)
     {
+        base.Init(players);
         timer = challengeTime;
     }
     
+    #endregion
+
+    #region Update
     protected virtual void Update()
     {
         UpdateTimer();
     }
-    
+    #endregion
+
+    #region Timer
+    [SerializeField] private float challengeTime = Mathf.Infinity;
+    private float timer;
     private void UpdateTimer()
     {
         timer -= Time.deltaTime;
@@ -28,4 +35,5 @@ public abstract class TimedChallenge : Challenge
             IsChallengeOver = true;
         }
     }
+    #endregion
 }
