@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TagPlayerScript : ChallengePlayerScript
 {
-    public bool Tagged { private set; get; } = false;
-    private float _totalInvincibilityTime = 2.0f;
+    private bool Tagged = false;
+    private float _totalInvincibilityTime = 0.5f;
     private float _invincibilityTimer = 0;
 
     private SpriteRenderer _spriteRenderer;
@@ -27,7 +27,6 @@ public class TagPlayerScript : ChallengePlayerScript
         if (Tagged)
         {
             bool tagSuccessful = other.GetComponent<TagPlayerScript>().Tag();
-            print(tagSuccessful);
             if (tagSuccessful)
             {
                 UnTag();
@@ -44,8 +43,12 @@ public class TagPlayerScript : ChallengePlayerScript
 
     public bool Tag()
     {
+        if (_invincibilityTimer > 0)
+        {
+            return false;
+        }
         _spriteRenderer.color = Color.black;
-        return Tagged = _invincibilityTimer <= 0;
+        return Tagged = true;
     }
 
     public override void Cleanup()
