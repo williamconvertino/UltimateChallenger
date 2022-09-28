@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coop Player-2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5162218182573825138, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
+      propertyPath: playerName
+      value: Coop Player 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2001092376008498287, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}

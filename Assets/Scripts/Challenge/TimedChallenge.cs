@@ -5,7 +5,6 @@ using UnityEngine;
 
 public abstract class TimedChallenge : Challenge
 {
-
     #region Initialization
 
     public override void Init(GameObject[] players)

@@ -1,21 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class TagChallenge : TimedChallenge
 {
+    #region Initialization
+    private List<TagPlayerScript> _playerScripts;
     public override void Init(GameObject[] players)
     {
         base.Init(players);
         AddScriptToPlayers<TagPlayerScript>();
-        TagPlayerScript initialTagger = Players[Random.Range(0, Players.Length)].GetComponent<TagPlayerScript>();
+        _playerScripts = GetPlayerScripts<TagPlayerScript>();
+        TagPlayerScript initialTagger = _playerScripts[Random.Range(0,_playerScripts.Count)];
         initialTagger.Tag();
     }
+    #endregion
 
-    protected override void Cleanup()
+    #region Victory Conditions
+
+    public override GameObject[] GetWinners()
     {
-        base.Cleanup();
-        
+        List<GameObject> winners = new List<GameObject>();
+        foreach (TagPlayerScript playerScript in _playerScripts)
+        {
+            if (!playerScript.Tagged)
+            {
+                winners.Add(playerScript.Player);
+            }
+        }
+        return winners.ToArray();
     }
+    public override GameObject[] GetLosers()
+    {
+        List<GameObject> losers = new List<GameObject>();
+        foreach (TagPlayerScript playerScript in _playerScripts)
+        {
+            if (playerScript.Tagged)
+            {
+                losers.Add(playerScript.Player);
+            }
+        }
+        return losers.ToArray();
+    }
+
+    #endregion
 }

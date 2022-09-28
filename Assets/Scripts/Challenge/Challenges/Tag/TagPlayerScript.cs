@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TagPlayerScript : ChallengePlayerScript
 {
-    private bool Tagged = false;
+    public bool Tagged { private set; get; }  = false;
     private float _totalInvincibilityTime = 0.5f;
     private float _invincibilityTimer = 0;
 

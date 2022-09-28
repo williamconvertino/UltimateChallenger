@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
      private void Update()
      {
-          UpdateChallenge();
+          CheckChallengeState();
      }
 
      #endregion
@@ -52,25 +52,18 @@ public class GameManager : MonoBehaviour
 
      #endregion
 
-     #region Challenges
+     #region Challenge Initialization
 
      [Header("Challenge Settings")]
      [SerializeField] private GameObject[] challengePrefabs;
      [SerializeField] private float timeBetweenChallenges;
+     
      private GameObject currentChallenge;
      private TimedChallenge currentChallengeScript;
-
-     private void UpdateChallenge()
-     {
-          if (currentChallengeScript != null && currentChallengeScript.IsChallengeOver)
-          {
-               StartCoroutine(LoadNewChallenge());
-;         }
-     }
-     
+     private bool challengeLoaded = false;
      private IEnumerator LoadNewChallenge()
      {
-          if (currentChallenge != null)
+          if (challengeLoaded)
           { 
                Destroy(currentChallenge);
                currentChallenge = null;
@@ -80,9 +73,28 @@ public class GameManager : MonoBehaviour
           currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
           currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
           currentChallengeScript.Init(_playerList);
+          challengeLoaded = true;
      }
-     
-     
+
+     #endregion
+
+     #region Challenge State
+     private void CheckChallengeState()
+     {
+          if (!challengeLoaded || !currentChallengeScript.IsChallengeOver)
+          {
+               return;
+          }
+
+          GameObject[] winners = currentChallengeScript.GetWinners();
+          GameObject[] losers = currentChallengeScript.GetLosers();
+          Debug.Log("Winner:\n");
+          foreach (GameObject player in winners)
+          {
+               Debug.Log(player.GetComponent<PlayerInfo>().name);
+          }
+          StartCoroutine(LoadNewChallenge());
+     }
      #endregion
 
      #region Stage
