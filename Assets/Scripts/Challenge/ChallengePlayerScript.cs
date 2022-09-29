@@ -9,7 +9,7 @@ public abstract class ChallengePlayerScript : MonoBehaviour
 
     public virtual void Init()
     {
-        Player = transform.gameObject;
+        Player = gameObject;
     }
     
     #endregion

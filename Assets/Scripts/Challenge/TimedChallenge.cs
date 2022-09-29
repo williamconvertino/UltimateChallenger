@@ -23,6 +23,7 @@ public abstract class TimedChallenge : Challenge
     #endregion
 
     #region Timer
+
     [SerializeField] private float challengeTime = Mathf.Infinity;
     private float timer;
     private void UpdateTimer()
@@ -30,9 +31,9 @@ public abstract class TimedChallenge : Challenge
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Cleanup();
             IsChallengeOver = true;
         }
     }
+
     #endregion
 }

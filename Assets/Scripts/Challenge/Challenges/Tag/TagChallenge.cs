@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class TagChallenge : TimedChallenge
 {
     #region Initialization
+    
     private List<TagPlayerScript> _playerScripts;
     public override void Init(GameObject[] players)
     {
@@ -15,6 +16,7 @@ public class TagChallenge : TimedChallenge
         _playerScripts = GetPlayerScripts<TagPlayerScript>();
         TagPlayerScript initialTagger = _playerScripts[Random.Range(0,_playerScripts.Count)];
         initialTagger.Tag();
+        Debug.Log("Starting Tag");
     }
     #endregion
 

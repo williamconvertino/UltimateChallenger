@@ -11,6 +11,7 @@ public class TagPlayerScript : ChallengePlayerScript
     private Color _originalColor;
     public override void Init()
     {
+        base.Init();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
     }

@@ -3,5 +3,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] private String playerName;
+    [SerializeField] private String playerName = "Player";
+
+    public String GetPlayerName() => playerName;
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
 
      #endregion
 
-     #region Challenge Initialization
+     #region Load Challenge
 
      [Header("Challenge Settings")]
      [SerializeField] private GameObject[] challengePrefabs;
@@ -64,10 +65,12 @@ public class GameManager : MonoBehaviour
      private IEnumerator LoadNewChallenge()
      {
           if (challengeLoaded)
-          { 
+          {
+               currentChallengeScript.Cleanup();
                Destroy(currentChallenge);
                currentChallenge = null;
                currentChallengeScript = null;
+               challengeLoaded = false;
           }
           yield return new WaitForSeconds(timeBetweenChallenges);
           currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
@@ -88,11 +91,7 @@ public class GameManager : MonoBehaviour
 
           GameObject[] winners = currentChallengeScript.GetWinners();
           GameObject[] losers = currentChallengeScript.GetLosers();
-          Debug.Log("Winner:\n");
-          foreach (GameObject player in winners)
-          {
-               Debug.Log(player.GetComponent<PlayerInfo>().name);
-          }
+          
           StartCoroutine(LoadNewChallenge());
      }
      #endregion

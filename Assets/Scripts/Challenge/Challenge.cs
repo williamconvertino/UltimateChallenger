@@ -8,7 +8,6 @@ public abstract class Challenge : MonoBehaviour
     public bool IsChallengeOver { protected set; get; } = false;
 
     #region Initialization
-    [SerializeField] private GameObject[] playerScriptPrefabs;
     protected GameObject[] Players;
     public virtual void Init(GameObject[] players)
     
@@ -80,7 +79,7 @@ public abstract class Challenge : MonoBehaviour
 
     #region Cleanup
     //Removes all the challenge scripts on players.
-    protected virtual void Cleanup()
+    public virtual void Cleanup()
     {
         if (!_usedPlayerScripts)
         {
