@@ -14,12 +14,15 @@ public class GameManager : MonoBehaviour
      {
           InitializeStage();
           InitializePlayers();
+          InitializeGameTimer();
           InitializeRespawnManager();
+          InitializeScoringSystem();
           StartCoroutine(LoadNewChallenge());
      }
 
      private void Update()
      {
+          UpdateGameTimer();
           CheckChallengeState();
      }
 
@@ -61,23 +64,30 @@ public class GameManager : MonoBehaviour
      
      private GameObject currentChallenge;
      private TimedChallenge currentChallengeScript;
-     private bool challengeLoaded = false;
+     private bool _challengeLoaded = false;
      private IEnumerator LoadNewChallenge()
      {
-          if (challengeLoaded)
+          yield return new WaitForSeconds(timeBetweenChallenges);
+          if (!_isGameOver)
+          {
+               currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
+               currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
+               currentChallengeScript.Init(_playerList);
+               _respawnManager.SetChallenge(currentChallengeScript);
+               _challengeLoaded = true;     
+          }
+     }
+
+     private void UnloadCurrentChallenge()
+     {
+          if (_challengeLoaded)
           {
                currentChallengeScript.Cleanup();
                Destroy(currentChallenge);
                currentChallenge = null;
                currentChallengeScript = null;
-               challengeLoaded = false;
+               _challengeLoaded = false;
           }
-          yield return new WaitForSeconds(timeBetweenChallenges);
-          currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
-          currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
-          currentChallengeScript.Init(_playerList);
-          _respawnManager.SetChallenge(currentChallengeScript);
-          challengeLoaded = true;
      }
 
      #endregion
@@ -85,18 +95,76 @@ public class GameManager : MonoBehaviour
      #region Challenge State
      private void CheckChallengeState()
      {
-          if (!challengeLoaded || !currentChallengeScript.IsChallengeOver)
+          if (!_challengeLoaded || !currentChallengeScript.IsChallengeOver)
           {
                return;
           }
 
           GameObject[] winners = currentChallengeScript.GetWinners();
           GameObject[] losers = currentChallengeScript.GetLosers();
-          
-          StartCoroutine(LoadNewChallenge());
+          scoringSystem.UpdateWinners(winners);
+          scoringSystem.UpdateLosers(losers);
+          CheckGameState();
+          UnloadCurrentChallenge();
+          if (!_isGameOver)
+          {
+               StartCoroutine(LoadNewChallenge());     
+          }
      }
      #endregion
 
+     #region Game State
+
+     [Header("Game Settings")]
+     [SerializeField] private ScoringSystem scoringSystem;
+
+     private bool _isGameOver = false;
+     
+     private void CheckGameState()
+     {
+          if (scoringSystem.IsGameOver())
+          {
+               EndGame();
+          }
+     }
+
+     private void EndGame()
+     {
+          _isGameOver = true;
+          Debug.Log("Game winner: ");
+          foreach (GameObject player in scoringSystem.GetWinners())
+          { 
+               Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName());
+          }
+     }
+
+     private void InitializeScoringSystem()
+     {
+          scoringSystem.Init(_playerList);
+     }
+
+     #endregion
+
+     #region Game Timer
+
+     [SerializeField] private float totalGameTime = Mathf.Infinity;
+     private float _gameTimer;
+
+     private void InitializeGameTimer()
+     {
+          _gameTimer = totalGameTime;
+     }
+     private void UpdateGameTimer()
+     {
+          _gameTimer -= Time.deltaTime;
+          if (_gameTimer <= 0 && !_isGameOver && !_challengeLoaded)
+          {
+               EndGame();
+          }
+     }
+
+     #endregion
+     
      #region Stage
 
      [Header("Stage Settings")]
