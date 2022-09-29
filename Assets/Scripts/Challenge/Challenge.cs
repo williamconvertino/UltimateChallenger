@@ -77,6 +77,15 @@ public abstract class Challenge : MonoBehaviour
 
     #endregion
 
+    #region On Respawn
+
+    public virtual void OnPlayerRespawn(GameObject player)
+    {
+        
+    } 
+
+    #endregion
+    
     #region Cleanup
     //Removes all the challenge scripts on players.
     public virtual void Cleanup()

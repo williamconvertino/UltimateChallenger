@@ -3,7 +3,16 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] private String playerName = "Player";
+    #region Name
 
+    [SerializeField] private String playerName = "Player";
     public String GetPlayerName() => playerName;
+
+    #endregion
+
+    #region Respawn
+
+    
+
+    #endregion
 }

@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
           currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
           currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
           currentChallengeScript.Init(_playerList);
+          _respawnManager.SetChallenge(currentChallengeScript);
           challengeLoaded = true;
      }
 

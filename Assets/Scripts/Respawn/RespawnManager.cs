@@ -27,6 +27,16 @@ public class RespawnManager : MonoBehaviour
 
     #endregion
 
+    #region Challenge Script
+
+    private Challenge _currentChallenge;
+    public void SetChallenge(Challenge challengeScript)
+    {
+        _currentChallenge = challengeScript;
+    }
+
+    #endregion
+    
     #region Spawning
     
     private void SpawnAllPlayers()
@@ -87,13 +97,21 @@ public class RespawnManager : MonoBehaviour
 
     #region RespawnChecking
 
+    private void Respawn(GameObject player)
+    {
+        if (_currentChallenge != null)
+        {
+            _currentChallenge.OnPlayerRespawn(player);
+        }
+        SpawnPlayer(player);
+    }
     private void CheckPlayerRespawn()
     {
         foreach (GameObject player in _allPlayers)
         {
             if (PlayerNeedsRespawn(player))
             {
-                SpawnPlayer(player);
+                Respawn(player);
             }
         }
     }

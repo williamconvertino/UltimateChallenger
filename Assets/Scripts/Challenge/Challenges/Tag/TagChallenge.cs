@@ -20,6 +20,25 @@ public class TagChallenge : TimedChallenge
     }
     #endregion
 
+    #region On Respawn
+
+    public override void OnPlayerRespawn(GameObject player)
+    {
+        foreach (TagPlayerScript playerScript in _playerScripts)
+        {
+            if (playerScript.Player == player)
+            {
+                playerScript.Tag();
+            }
+            else
+            {
+                playerScript.UnTag();
+            }
+        }
+    }
+
+    #endregion
+    
     #region Victory Conditions
 
     public override GameObject[] GetWinners()
