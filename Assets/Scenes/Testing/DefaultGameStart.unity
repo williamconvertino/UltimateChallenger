@@ -273,6 +273,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2098027547859109280, guid: 605f0ba8cdbaa6544aaaaf7c837e2365, type: 3}
   m_PrefabInstance: {fileID: 362660123}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &362660125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2098027547859109283, guid: 605f0ba8cdbaa6544aaaaf7c837e2365, type: 3}
+  m_PrefabInstance: {fileID: 362660123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &387105239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -495,6 +500,8 @@ MonoBehaviour:
   - {fileID: 1885232393}
   challengePrefabs:
   - {fileID: 1724601326}
+  - {fileID: 1656756495}
+  - {fileID: 362660125}
   timeBetweenChallenges: 3
   scoringSystem: {fileID: 758408056}
   totalGameTime: 45
@@ -751,6 +758,11 @@ Transform:
   m_Father: {fileID: 1542804784}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1656756495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7358870396893654953, guid: 18812e236b1e2e74a8c86ce62ab26357, type: 3}
+  m_PrefabInstance: {fileID: 387105239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1656756497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7358870396893654955, guid: 18812e236b1e2e74a8c86ce62ab26357, type: 3}
