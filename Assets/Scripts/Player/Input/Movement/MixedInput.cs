@@ -13,4 +13,12 @@ public class MixedInput : PlayerInput
             DoJump = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)|| Input.GetButton("Jump")
         };
     }
+    public override TDMovementInput GetTDInput()
+    {
+        return new TDMovementInput()
+        {
+            DirX = Input.GetAxis("Horizontal"),
+            DirY = Input.GetAxis("Vertical")
+        };
+    }
 }

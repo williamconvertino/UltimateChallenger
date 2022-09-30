@@ -95,16 +95,6 @@ public class RPSChallenge : TimedChallenge
 
     #endregion
 
-    public override void Cleanup()
-    {
-        base.Cleanup();
-        print("Scores:\n");
-        foreach (RPSTeam team in _allTeams)
-        {
-            print(team + ": " + _teamScores[team]);
-        }
-    }
-
     public enum RPSTeam
     {
         Rock,

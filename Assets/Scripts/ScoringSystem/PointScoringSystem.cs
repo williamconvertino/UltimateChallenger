@@ -26,20 +26,14 @@ public class PointScoringSystem : ScoringSystem
 
     public override void UpdateWinners(GameObject[] winners)
     {
-        StringBuilder message = new StringBuilder("------------\n Game winners:\n");
-
         foreach (GameObject player in winners)
         {
-            message.Append(player.GetComponent<PlayerInfo>().GetPlayerName());
-            message.Append(",\n");
             _playerScore[player]++;
             if (_playerScore[player] > _highestScore)
             {
                 _highestScore++;
             }
         }
-        message.Append("\n------------");
-        Debug.Log(message);
     }
 
     public override bool IsGameOver()

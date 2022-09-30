@@ -12,4 +12,12 @@ public class JILKInput : PlayerInput
             DoJump = Input.GetKeyDown(KeyCode.I)
         };
     }
+    public override TDMovementInput GetTDInput()
+    {
+        return new TDMovementInput()
+        {
+            DirX = (Input.GetKey(KeyCode.J) ? -1.0f : 0) + (Input.GetKey(KeyCode.L) ? 1.0f : 0),
+            DirY = (Input.GetKey(KeyCode.K) ? -1.0f : 0) + (Input.GetKey(KeyCode.I) ? 1.0f : 0),
+        };
+    }
 }

@@ -13,4 +13,13 @@ public class ArrowInput : PlayerInput
             DoJump = Input.GetKeyDown(KeyCode.UpArrow)
         };
     }
+
+    public override TDMovementInput GetTDInput()
+    {
+        return new TDMovementInput()
+        {
+            DirX = (Input.GetKey(KeyCode.LeftArrow) ? -1.0f : 0) + (Input.GetKey(KeyCode.RightArrow) ? 1.0f : 0),
+            DirY = (Input.GetKey(KeyCode.DownArrow) ? -1.0f : 0) + (Input.GetKey(KeyCode.UpArrow) ? 1.0f : 0)
+        };
+    }
 }
