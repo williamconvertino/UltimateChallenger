@@ -3,16 +3,13 @@ using UnityEngine;
 
 namespace Player.Input.ButtonPress
 {
-    public class SplitKeyboardRightButtonPress : ButtonPress
+    public class SplitKeyboardMiddleButtonPress : ButtonPress
     {
         protected override void PopulateKeyCodeList()
         {
             KeyCodeList = new KeyCode[]
             {
-                KeyCode.RightShift,
-                KeyCode.RightAlt,
-                KeyCode.Return,
-                KeyCode.RightCommand
+                KeyCode.Space
             } ;
         }
     }

@@ -11,15 +11,8 @@ namespace Player.Input.ButtonPress
             {
                 KeyCode.LeftShift,
                 KeyCode.LeftCommand,
-                KeyCode.Z,
-                KeyCode.X,
-                KeyCode.E,
-                KeyCode.Q,
-                KeyCode.C,
-                KeyCode.R,
                 KeyCode.Tab,
-                KeyCode.V,
-                KeyCode.T
+                KeyCode.CapsLock
             } ;
         }
     }

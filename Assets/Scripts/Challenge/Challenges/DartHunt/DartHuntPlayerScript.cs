@@ -67,6 +67,8 @@ public class DartHuntPlayerScript : ChallengePlayerScript
         PlayerHit = true;
     }
     
+    
+
     public override void Cleanup()
     {
         gameObject.SetActive(true);
