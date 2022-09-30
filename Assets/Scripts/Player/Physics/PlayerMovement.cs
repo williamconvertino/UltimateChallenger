@@ -41,12 +41,23 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 _velocity = Vector2.zero;
     public Vector2 GetVelocity => _velocity;
+    private int _directionX = 1;
+    public int GetDirectionX => _directionX;
     private PlayerInput.MovementInput _input;
     
     //Moves the player according to physics and their input.
     private void Move()
     {
         _velocity.x = _input.DirX * speedScale;
+
+        if (_input.DirX > 0)
+        {
+            _directionX = 1;
+        }
+        if (_input.DirX < 0)
+        {
+            _directionX = -1;
+        }
      
         UpdateGravity();
         CheckGrounding();

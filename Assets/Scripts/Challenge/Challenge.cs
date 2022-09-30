@@ -18,6 +18,8 @@ public abstract class Challenge : MonoBehaviour
 
     #region Victory
 
+    protected abstract void CheckVictory();
+    
     public virtual GameObject[] GetWinners()
     {
         return new GameObject[0];
@@ -47,7 +49,6 @@ public abstract class Challenge : MonoBehaviour
         _usedPlayerScripts = true;
     }
 
-    
     //Returns all the challenge scripts of the specified type on every player.
     protected List<T> GetPlayerScripts<T>() where T : ChallengePlayerScript
     {

@@ -1,7 +1,4 @@
-﻿using System;
-using Stage;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class TimedChallenge : Challenge
 {
@@ -19,6 +16,7 @@ public abstract class TimedChallenge : Challenge
     protected virtual void Update()
     {
         UpdateTimer();
+        CheckVictory();
     }
     #endregion
 
@@ -29,6 +27,10 @@ public abstract class TimedChallenge : Challenge
     private void UpdateTimer()
     {
         timer -= Time.deltaTime;
+    }
+
+    protected override void CheckVictory()
+    {
         if (timer <= 0)
         {
             IsChallengeOver = true;

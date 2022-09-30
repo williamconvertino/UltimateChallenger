@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
      [SerializeField] private float timeBetweenChallenges;
      
      private GameObject currentChallenge;
-     private TimedChallenge currentChallengeScript;
+     private Challenge currentChallengeScript;
      private bool _challengeLoaded = false;
      private IEnumerator LoadNewChallenge()
      {
@@ -71,10 +71,10 @@ public class GameManager : MonoBehaviour
           if (!_isGameOver)
           {
                currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
-               currentChallengeScript = currentChallenge.GetComponent<TimedChallenge>();
+               currentChallengeScript = currentChallenge.GetComponent<Challenge>();
                currentChallengeScript.Init(_playerList);
                _respawnManager.SetChallenge(currentChallengeScript);
-               _challengeLoaded = true;     
+               _challengeLoaded = true;
           }
      }
 
@@ -131,11 +131,16 @@ public class GameManager : MonoBehaviour
      private void EndGame()
      {
           _isGameOver = true;
-          Debug.Log("Game winner: ");
+
+          StringBuilder message = new StringBuilder("------------\n Game winners:\n");
+
           foreach (GameObject player in scoringSystem.GetWinners())
           { 
-               Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName());
+               message.Append(player.GetComponent<PlayerInfo>().GetPlayerName());
+               message.Append(",\n");
           }
+          message.Append("\n------------");
+          Debug.Log(message);
      }
 
      private void InitializeScoringSystem()
