@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
           UnloadCurrentChallenge();
           if (!_isGameOver)
           {
-               StartCoroutine(LoadNewChallenge());     
+               StartCoroutine(LoadNewChallenge());  
           }
      }
      #endregion
@@ -130,6 +130,10 @@ public class GameManager : MonoBehaviour
 
      private void EndGame()
      {
+          if (_isGameOver)
+          {
+               return;
+          }
           _isGameOver = true;
 
           StringBuilder message = new StringBuilder("------------\n Game winners:\n");

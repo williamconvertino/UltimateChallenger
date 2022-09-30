@@ -39,14 +39,17 @@ public abstract class Challenge : MonoBehaviour
         player.AddComponent<T>().Init();
         _usedPlayerScripts = true;
     }
-    protected void AddScriptToPlayers<T> () where T : ChallengePlayerScript
+    protected List<T> AddScriptToPlayers<T> () where T : ChallengePlayerScript
     {
+        List<T> playerScripts = new List<T>();
         foreach (GameObject player in Players)
         {
-            player.AddComponent<T>().Init();
+            T playerScript = player.AddComponent<T>();
+            playerScript.Init();
+            playerScripts.Add(playerScript);
         }
-
         _usedPlayerScripts = true;
+        return playerScripts;
     }
 
     //Returns all the challenge scripts of the specified type on every player.
