@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
             _coyoteJumpCurrentTimer -= Time.deltaTime;
         }
         
-        if (_canJump && _input.DoJump && _coyoteJumpCurrentTimer >= 0 )
+        if (_canJump && _input.DoJump && _coyoteJumpCurrentTimer >= 0 && _velocity.y <= 0)
         {
             _canJump = false;
             _velocity.y = jumpScale;
