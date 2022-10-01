@@ -207,6 +207,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &338608272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2098027547859109283, guid: 605f0ba8cdbaa6544aaaaf7c837e2365, type: 3}
+  m_PrefabInstance: {fileID: 362660123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &362660123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,6 +377,11 @@ Transform:
   m_Father: {fileID: 1542804784}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &479653259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2383912417458185922, guid: 1d776a5cb94fa714ea15d4327dfb0938, type: 3}
+  m_PrefabInstance: {fileID: 2383912419114595628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &734788745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4262110333574143649, guid: ddae98565e63bbc40ac5bee69a5489ff, type: 3}
@@ -397,6 +407,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 110093230733067429, guid: 13d509c9bf601f94d93616b0b0667a31, type: 3}
   m_PrefabInstance: {fileID: 5829567281472730699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &994985531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7358870396893654953, guid: 18812e236b1e2e74a8c86ce62ab26357, type: 3}
+  m_PrefabInstance: {fileID: 387105239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1004812941
 PrefabInstance:
@@ -540,13 +555,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefabs:
   - {fileID: 2114402573}
-  - {fileID: 1004812943}
   - {fileID: 8780316542282653923}
+  - {fileID: 1004812943}
   challengePrefabs:
-  - {fileID: 1094522910}
+  - {fileID: 1446341878}
+  - {fileID: 994985531}
+  - {fileID: 338608272}
+  - {fileID: 479653259}
   timeBetweenChallenges: 3
   scoringSystem: {fileID: 758408056}
-  totalGameTime: 45
+  totalGameTime: 12
   stage: {fileID: 7158010453204480358, guid: c8c16c003ec77764fa58209c43e3e9ca, type: 3}
 --- !u!4 &1123937121
 Transform:
@@ -563,6 +581,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1446341878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4262110333574143648, guid: ddae98565e63bbc40ac5bee69a5489ff, type: 3}
+  m_PrefabInstance: {fileID: 4262110333973209640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1503232953
 GameObject:
   m_ObjectHideFlags: 0

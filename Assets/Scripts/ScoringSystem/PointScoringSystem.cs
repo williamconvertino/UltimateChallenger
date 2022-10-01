@@ -54,4 +54,12 @@ public class PointScoringSystem : ScoringSystem
 
         return winningPlayers.ToArray();
     }
+
+    public override void PrintScores()
+    {
+        foreach (GameObject player in _playerScore.Keys)
+        {
+            Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName() + ": " + _playerScore[player] + " points.");
+        }
+    }
 }

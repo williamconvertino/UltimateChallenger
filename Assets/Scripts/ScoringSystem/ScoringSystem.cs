@@ -15,4 +15,6 @@ public abstract class ScoringSystem : MonoBehaviour
 
     public abstract bool IsGameOver();
     public abstract GameObject[] GetWinners();
+
+    public abstract void PrintScores();
 }

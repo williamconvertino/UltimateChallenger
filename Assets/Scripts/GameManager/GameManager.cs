@@ -136,15 +136,9 @@ public class GameManager : MonoBehaviour
           }
           _isGameOver = true;
 
-          StringBuilder message = new StringBuilder("------------\n Game winners:\n");
+          Debug.Log("------------\n Scores:\n------------");
+          scoringSystem.PrintScores();
 
-          foreach (GameObject player in scoringSystem.GetWinners())
-          { 
-               message.Append(player.GetComponent<PlayerInfo>().GetPlayerName());
-               message.Append(",\n");
-          }
-          message.Append("\n------------");
-          Debug.Log(message);
      }
 
      private void InitializeScoringSystem()

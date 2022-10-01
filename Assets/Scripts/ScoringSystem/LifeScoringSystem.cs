@@ -7,19 +7,19 @@ public class LifeScoringSystem : ScoringSystem
 {
     [SerializeField] private int numLives;
 
-    private Dictionary<GameObject, int> playerLives;
+    private Dictionary<GameObject, int> _playerLives;
     private List<GameObject> remainingPlayers;
     private int _highestLifeTotal;
 
     public override void Init(GameObject[] players)
     {
         base.Init(players);
-        playerLives = new Dictionary<GameObject, int>();
+        _playerLives = new Dictionary<GameObject, int>();
         _highestLifeTotal = numLives;
         remainingPlayers = new List<GameObject>();
         foreach (GameObject player in players)
         {
-            playerLives.Add(player, numLives);
+            _playerLives.Add(player, numLives);
             remainingPlayers.Add(player);
         }
     }
@@ -27,14 +27,14 @@ public class LifeScoringSystem : ScoringSystem
     {
         foreach (GameObject player in losers)
         {
-            playerLives[player] -= 1;
-            if (playerLives[player] < 1)
+            _playerLives[player] -= 1;
+            if (_playerLives[player] < 1)
             {
                 remainingPlayers.Remove(player);
                 player.SetActive(false);
             }
 
-            _highestLifeTotal = Math.Max(_highestLifeTotal, playerLives[player]);
+            _highestLifeTotal = Math.Max(_highestLifeTotal, _playerLives[player]);
         }
     }
 
@@ -51,14 +51,22 @@ public class LifeScoringSystem : ScoringSystem
     public override GameObject[] GetWinners()
     {
         List<GameObject> highestLifePlayers = new List<GameObject>();
-        foreach (GameObject player in playerLives.Keys)
+        foreach (GameObject player in _playerLives.Keys)
         {
-            if (playerLives[player] == _highestLifeTotal)
+            if (_playerLives[player] == _highestLifeTotal)
             {
                 highestLifePlayers.Add(player);
             }
         }
 
         return highestLifePlayers.ToArray();
+    }
+
+    public override void PrintScores()
+    {
+        foreach (GameObject player in _playerLives.Keys)
+        {
+            Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName() + ": " + _playerLives[player] + " lives.");
+        }
     }
 }
