@@ -15,12 +15,12 @@ public class TDPlayerMovement : MonoBehaviour
     
     private Rigidbody2D _rb2d;
     private BoxCollider2D _boxCollider;
-    private PlayerInput _playerInput;
+    private PlayerMovementInput _playerMovementInput;
     private void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
-        _playerInput = GetComponent<PlayerInput>();
+        _playerMovementInput = GetComponent<PlayerMovementInput>();
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class TDPlayerMovement : MonoBehaviour
     private int _directionY = 1;
     public int GetDirectionX => _directionX;
     public int GetDirectionY => _directionY;
-    private PlayerInput.TDMovementInput _input;
+    private PlayerMovementInput.TDMovementInput _input;
     
     //Moves the player according to physics and their input.
     private void Move()
@@ -76,7 +76,7 @@ public class TDPlayerMovement : MonoBehaviour
     //Gets the player's current input.
     private void GetInput()
     {
-        _input = _playerInput.GetTDInput();
+        _input = _playerMovementInput.GetTDMovementInput();
     }
     
     //A struct for storing the player's input.

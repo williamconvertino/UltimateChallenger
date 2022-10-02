@@ -1,18 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+namespace Player
 {
-    #region Name
+    public class PlayerInfo : MonoBehaviour
+    {
+        public String Name { private set; get;}
 
-    [SerializeField] private String playerName = "Player";
-    public String GetPlayerName() => playerName;
-
-    #endregion
-
-    #region Respawn
-
-    
-
-    #endregion
+        public void Init(String name)
+        {
+            Name = name;
+        }
+    }
 }

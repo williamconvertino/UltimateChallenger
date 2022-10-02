@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MixedInput : PlayerInput
+public class MixedMovementInput : PlayerMovementInput
 {
-    public override MovementInput GetInput()
+    public override MovementInput GetMovementInput()
     {
         return new MovementInput()
         {
@@ -13,7 +13,7 @@ public class MixedInput : PlayerInput
             DoJump = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)|| Input.GetButton("Jump")
         };
     }
-    public override TDMovementInput GetTDInput()
+    public override TDMovementInput GetTDMovementInput()
     {
         return new TDMovementInput()
         {

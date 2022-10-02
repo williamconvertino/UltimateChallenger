@@ -18,12 +18,12 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D _rb2d;
     private BoxCollider2D _boxCollider;
-    private PlayerInput _playerInput;
+    private PlayerMovementInput _playerMovementInput;
     private void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
-        _playerInput = GetComponent<PlayerInput>();
+        _playerMovementInput = GetComponentInChildren<PlayerMovementInput>();
     }
 
     private void Update()
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetVelocity => _velocity;
     private int _directionX = 1;
     public int GetDirectionX => _directionX;
-    private PlayerInput.MovementInput _input;
+    private PlayerMovementInput.MovementInput _input;
     
     //Moves the player according to physics and their input.
     private void Move()
@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
     //Gets the player's current input.
     private void GetInput()
     {
-        _input = _playerInput.GetInput();
+        _input = _playerMovementInput.GetMovementInput();
     }
     
     //A struct for storing the player's input.

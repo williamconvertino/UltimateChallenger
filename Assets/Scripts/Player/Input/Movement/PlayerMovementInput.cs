@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerInput : MonoBehaviour
+public abstract class PlayerMovementInput : MonoBehaviour
 {
-    public abstract MovementInput GetInput();
-    public abstract TDMovementInput GetTDInput();
+    public abstract MovementInput GetMovementInput();
+    public abstract TDMovementInput GetTDMovementInput();
 
     public struct MovementInput
     {

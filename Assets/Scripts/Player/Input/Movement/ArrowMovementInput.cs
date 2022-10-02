@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowInput : PlayerInput
+public class ArrowMovementInput : PlayerMovementInput
 {
 
-    public override MovementInput GetInput()
+    public override MovementInput GetMovementInput()
     {
         return new MovementInput()
         {
@@ -14,7 +14,7 @@ public class ArrowInput : PlayerInput
         };
     }
 
-    public override TDMovementInput GetTDInput()
+    public override TDMovementInput GetTDMovementInput()
     {
         return new TDMovementInput()
         {

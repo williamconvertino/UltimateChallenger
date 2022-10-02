@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JILKInput : PlayerInput
+public class JilkMovementInput : PlayerMovementInput
 {
-    public override MovementInput GetInput()
+    public override MovementInput GetMovementInput()
     {
         return new MovementInput()
         {
@@ -12,7 +12,7 @@ public class JILKInput : PlayerInput
             DoJump = Input.GetKeyDown(KeyCode.I)
         };
     }
-    public override TDMovementInput GetTDInput()
+    public override TDMovementInput GetTDMovementInput()
     {
         return new TDMovementInput()
         {

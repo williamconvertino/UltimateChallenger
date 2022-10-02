@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WASDInput : PlayerInput
+public class WasdMovementInput : PlayerMovementInput
 {
-    public override MovementInput GetInput()
+    public override MovementInput GetMovementInput()
     {
         return new MovementInput()
         {
@@ -12,7 +12,7 @@ public class WASDInput : PlayerInput
             DoJump = Input.GetKeyDown(KeyCode.W)
         };
     }
-    public override TDMovementInput GetTDInput()
+    public override TDMovementInput GetTDMovementInput()
     {
         return new TDMovementInput()
         {

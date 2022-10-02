@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player.Input.ButtonPress
 {
-    public abstract class ButtonPress : MonoBehaviour
+    public abstract class PlayerButtonPress : MonoBehaviour
     {
         protected KeyCode[] KeyCodeList;
 
