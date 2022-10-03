@@ -59,7 +59,7 @@ public class PointScoringSystem : ScoringSystem
     {
         foreach (GameObject player in _playerScore.Keys)
         {
-            Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName() + ": " + _playerScore[player] + " points.");
+            //Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName() + ": " + _playerScore[player] + " points.");
         }
     }
 }

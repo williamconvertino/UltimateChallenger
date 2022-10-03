@@ -66,7 +66,7 @@ public class LifeScoringSystem : ScoringSystem
     {
         foreach (GameObject player in _playerLives.Keys)
         {
-            Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName() + ": " + _playerLives[player] + " lives.");
+            //Debug.Log(player.GetComponent<PlayerInfo>().GetPlayerName() + ": " + _playerLives[player] + " lives.");
         }
     }
 }

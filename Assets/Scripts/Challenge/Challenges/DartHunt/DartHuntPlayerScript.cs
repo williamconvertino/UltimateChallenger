@@ -8,13 +8,13 @@ using UnityEngine.UIElements;
 public class DartHuntPlayerScript : ChallengePlayerScript
 {
     public bool PlayerHit { private set; get; } = false;
-    private ButtonPress _playerButtonPressScript;
+    private PlayerInput _playerInput;
     private PlayerMovement _playerMovementScript;
     
     public override void Init()
     {
         base.Init();
-        _playerButtonPressScript = GetComponent<ButtonPress>();
+        _playerInput = GetComponent<PlayerInput>();
         _playerMovementScript = GetComponent<PlayerMovement>();
         _dartPrefab = Resources.Load<GameObject>("Prefabs/ChallengeProps/Dart");
     }
@@ -31,7 +31,7 @@ public class DartHuntPlayerScript : ChallengePlayerScript
         {
             _shootTimer -= Time.deltaTime;
         }
-        if (_playerButtonPressScript.ButtonPressed())
+        if (_playerInput.ButtonPressed())
         {
             ShootDart();
         }
