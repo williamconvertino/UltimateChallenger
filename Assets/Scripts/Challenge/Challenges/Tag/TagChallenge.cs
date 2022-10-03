@@ -51,6 +51,7 @@ public class TagChallenge : TimedChallenge
                 winners.Add(playerScript.Player);
             }
         }
+        Debug.Log(winners.ToArray());
         return winners.ToArray();
     }
     public override GameObject[] GetLosers()
