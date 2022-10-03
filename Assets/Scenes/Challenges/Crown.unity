@@ -178,7 +178,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coop Player-2 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8638324060798645978, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
 --- !u!4 &307353840 stripped
 Transform:
@@ -245,7 +246,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coop Player-1 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4723003227750111288, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
 --- !u!4 &962084271 stripped
 Transform:
@@ -266,7 +268,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1270469633}
-  - component: {fileID: 1270469632}
   - component: {fileID: 1270469631}
   m_Layer: 0
   m_Name: ChallengeDev
@@ -287,22 +288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9771fb53b57462f4ebef6a3d3a48df75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1270469632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270469630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5b07367abb469690490f59f8beb259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - {fileID: 307353841}
+  _allPlayers:
   - {fileID: 962084272}
-  stage: {fileID: 7158010454400641869}
+  - {fileID: 307353841}
+  _activePlayers:
+  - {fileID: 962084272}
+  - {fileID: 307353841}
 --- !u!4 &1270469633
 Transform:
   m_ObjectHideFlags: 0
@@ -589,11 +580,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8c16c003ec77764fa58209c43e3e9ca, type: 3}
---- !u!1 &7158010454400641869 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7158010453204480358, guid: c8c16c003ec77764fa58209c43e3e9ca, type: 3}
-  m_PrefabInstance: {fileID: 7158010454400641868}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7158010454400641870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7158010453204480359, guid: c8c16c003ec77764fa58209c43e3e9ca, type: 3}

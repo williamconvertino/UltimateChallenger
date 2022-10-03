@@ -9,8 +9,8 @@ public class RespawnManager : MonoBehaviour
 {
     #region Core
 
-    private GameObject[] _allPlayers;
-    private List<GameObject> _activePlayers;
+    public GameObject[] _allPlayers;
+    public List<GameObject> _activePlayers;
     
     public void Init(GameObject[] players, GameObject stage)
     {

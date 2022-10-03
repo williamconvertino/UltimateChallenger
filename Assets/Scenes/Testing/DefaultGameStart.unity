@@ -468,7 +468,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coop Player-2 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8638324060798645978, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
 --- !u!4 &1004812942 stripped
 Transform:
@@ -564,7 +565,7 @@ MonoBehaviour:
   - {fileID: 479653259}
   timeBetweenChallenges: 3
   scoringSystem: {fileID: 758408056}
-  totalGameTime: 12
+  totalGameTime: 30
   stage: {fileID: 7158010453204480358, guid: c8c16c003ec77764fa58209c43e3e9ca, type: 3}
 --- !u!4 &1123937121
 Transform:
@@ -849,7 +850,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coop Player-1 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4723003227750111288, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
 --- !u!4 &2114402572 stripped
 Transform:
@@ -1144,7 +1146,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8743546924379155670, guid: 9ca4a1583bac1aa49a0ae1de34172422, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ca4a1583bac1aa49a0ae1de34172422, type: 3}
 --- !u!4 &8780316542282653922 stripped
 Transform:
