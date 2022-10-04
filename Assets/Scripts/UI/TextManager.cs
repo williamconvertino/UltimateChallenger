@@ -22,7 +22,7 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    void showTitleForSeconds(String message, float time)
+    public void showTitleForSeconds(String message, float time)
     {
         StartCoroutine(ShowTitleText(message, time));
     }
@@ -36,7 +36,7 @@ public class TextManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        showTitleForSeconds("Welcome to the game", 2);
+        //showTitleForSeconds("Welcome to the game", 2);
     }
 
     // Update is called once per frame

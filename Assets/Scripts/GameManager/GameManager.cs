@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
           InitializeScoringSystem();
           StartCoroutine(LoadNewChallenge());
           _initialized = true;
+          TextManager.instance.showTitleForSeconds("Welcome to the game", 2);
      }
 
      private void Update()
