@@ -84,7 +84,13 @@ public class GameManager : MonoBehaviour
      private bool _challengeLoaded = false;
      private IEnumerator LoadNewChallenge()
      {
-          yield return new WaitForSeconds(_gameSettings.TimeBetweenRounds);
+          float timeWaited = 0;
+          while (timeWaited < _gameSettings.TimeBetweenRounds)
+          {
+               timeWaited += 1;
+               yield return new WaitForSeconds(1);
+               TextManager.instance.showTitle(((int)_gameSettings.TimeBetweenRounds - timeWaited).ToString());
+          }
           if (!_isGameOver)
           {
                currentChallenge = Instantiate(_challengePrefabs[Random.Range(0,_challengePrefabs.Count)], transform);

@@ -26,6 +26,11 @@ public class TextManager : MonoBehaviour
     {
         StartCoroutine(ShowTitleText(message, time));
     }
+    
+    public void showTitle(String message)
+    {
+        titleText.text = message;
+    }
 
     IEnumerator ShowTitleText(String message, float time)
     {
