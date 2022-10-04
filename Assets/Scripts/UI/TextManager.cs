@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun.Demo.PunBasics;
@@ -21,14 +22,21 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    void showTitleForSeconds()
+    void showTitleForSeconds(String message, float time)
     {
-        titleText.text = "Welcome to the game";
+        StartCoroutine(ShowTitleText(message, time));
+    }
+
+    IEnumerator ShowTitleText(String message, float time)
+    {
+        titleText.text = message;
+        yield return new WaitForSeconds(time);
+        titleText.text = "";
     }
     // Start is called before the first frame update
     void Start()
     {
-        showTitleForSeconds();
+        showTitleForSeconds("Welcome to the game", 2);
     }
 
     // Update is called once per frame
