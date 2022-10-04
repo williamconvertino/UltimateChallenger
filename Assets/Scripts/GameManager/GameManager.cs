@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
           InitializeScoringSystem();
           StartCoroutine(LoadNewChallenge());
           _initialized = true;
-          TextManager.instance.showTitleForSeconds("Welcome to the game", 2);
+          TextManager.instance.showTimedScreenTitle("Welcome to the game", 3);
      }
 
      private void Update()
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
           {
                timeWaited += 1;
                yield return new WaitForSeconds(1);
-               TextManager.instance.showTitle(((int)_gameSettings.TimeBetweenRounds - timeWaited).ToString());
+               TextManager.instance.setScreenTitle(((int)_gameSettings.TimeBetweenRounds - timeWaited).ToString());
           }
           if (!_isGameOver)
           {
