@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solidLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   speedScale: 6
 --- !u!1 &3675085099310339450
 GameObject:

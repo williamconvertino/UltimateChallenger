@@ -3,7 +3,6 @@
 public abstract class TDChallengePlayerScript : ChallengePlayerScript
 {
     private PlayerMovement _playerMovementScript;
-    private PlayerInput _playerInputScript;
     private TDPlayerMovement _tdPlayerMovementScript;
     public override void Init()
     {
@@ -13,6 +12,7 @@ public abstract class TDChallengePlayerScript : ChallengePlayerScript
         _tdPlayerMovementScript = GetComponent<TDPlayerMovement>();
 
         _playerMovementScript.enabled = false;
+        
         _tdPlayerMovementScript.enabled = true;
     }
 

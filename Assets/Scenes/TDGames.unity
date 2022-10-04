@@ -294,12 +294,9 @@ MonoBehaviour:
     headSprite: {fileID: 0}
     spriteColor: {r: 0.10196078, g: 0.8666667, b: 0.26402637, a: 1}
   challengePrefabs:
-  - {fileID: 2098027547859109283, guid: b93c7715815208341aad4237c3ab690e, type: 3}
-  - {fileID: 2383912417458185922, guid: c96f3ab127a3b76488bc173a6d5d233b, type: 3}
-  - {fileID: 4262110333574143648, guid: 74f42dce926df284ba6d6f8729f498af, type: 3}
-  - {fileID: 7358870396893654953, guid: 64c9026fa736f38448b41d9006b77559, type: 3}
+  - {fileID: 4393922073851393597, guid: d2ec231f95cba444dbeb42bd31252400, type: 3}
   stagePrefab: {fileID: 5267289161324285110, guid: d2184922055bfe14f8462f949631cb7c, type: 3}
-  scoringSystemPrefab: {fileID: 6247631963613999318, guid: a1791e2c6e31c9340b45e8aa682a82c9, type: 3}
+  scoringSystemPrefab: {fileID: 232204447587287596, guid: b6a4f54a262f02b42bcefddb6d5c4306, type: 3}
   gameTime: Infinity
   timeBetweenRounds: 3
 --- !u!4 &1438165738
