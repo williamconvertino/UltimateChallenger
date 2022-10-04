@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
           StartCoroutine(LoadNewChallenge());
           _initialized = true;
           TextManager.instance.showTimedScreenTitle("Welcome to the game", 3);
-     }
+          TextManager.instance.clearScreenSubtext();
+    }
 
      private void Update()
      {
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
                timeWaited += 1;
                yield return new WaitForSeconds(1);
                TextManager.instance.setScreenTitle(((int)_gameSettings.TimeBetweenRounds - timeWaited).ToString());
+           
           }
           if (!_isGameOver)
           {

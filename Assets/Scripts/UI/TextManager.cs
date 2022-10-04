@@ -56,6 +56,11 @@ public class TextManager : MonoBehaviour
         clearText(screenTitle);
     }
 
+    public void clearScreenSubtext()
+    {
+        clearText(screenSubtext);
+    }
+
     public void clearBottomGameStatus()
     {
         clearText(bottomGameStatus);
