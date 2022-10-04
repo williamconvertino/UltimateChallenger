@@ -20,12 +20,15 @@ public class TextManager : MonoBehaviour
             instance = this;
         }
     }
+
+    void showTitleForSeconds()
+    {
+        titleText.text = "Welcome to the game";
+    }
     // Start is called before the first frame update
     void Start()
     {
-        titleText.text = "TEST TITLE TAG";
-        timer.text = "Time left ";
-
+        showTitleForSeconds();
     }
 
     // Update is called once per frame
