@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,18 +11,29 @@ public class GameManager : MonoBehaviour
 {
      #region Core
 
-     private void Start()
+     private bool _initialized;
+     private GameSettings _gameSettings;
+     public void Init(GameSettings settings)
      {
+          _gameSettings = settings;
+          _challengePrefabs = settings.ChallengePrefabs;
+          _scoringSystem = Instantiate(settings.ScoringSystemPrefab).GetComponent<ScoringSystem>();
+          totalGameTime = settings.GameTime;
           InitializeStage();
           InitializePlayers();
           InitializeGameTimer();
           InitializeRespawnManager();
           InitializeScoringSystem();
           StartCoroutine(LoadNewChallenge());
+          _initialized = true;
      }
 
      private void Update()
      {
+          if (!_initialized)
+          {
+               return;
+          }
           UpdateGameTimer();
           CheckChallengeState();
      }
@@ -30,15 +42,19 @@ public class GameManager : MonoBehaviour
      
      #region Players
 
-     [Header("Player Settings")] [SerializeField] private GameObject[] playerPrefabs;
-     private GameObject[] _playerList;
+     [Header("Player Settings")]
+     private List<GameObject> _playerList;
 
      private void InitializePlayers()
      {
-          _playerList = new GameObject[playerPrefabs.Length];
-          for (int i = 0; i < playerPrefabs.Length; i++)
+          _playerList = new List<GameObject>();
+          foreach (PlayerData pd in _gameSettings.PlayerData)
           {
-               _playerList[i] = Instantiate(playerPrefabs[i], transform);
+               GameObject player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"));
+               player.AddComponent(pd.playerInputPrefab.GetComponent<PlayerInput>().GetType());
+               player.GetComponent<SpriteRenderer>().color = pd.spriteColor;
+               player.AddComponent<PlayerInfo>().playerName = pd.playerName;
+               _playerList.Add(player);
           }
      }
      
@@ -59,20 +75,20 @@ public class GameManager : MonoBehaviour
      #region Load Challenge
 
      [Header("Challenge Settings")]
-     [SerializeField] private GameObject[] challengePrefabs;
-     [SerializeField] private float timeBetweenChallenges;
+     private List<GameObject> _challengePrefabs;
+     private float _timeBetweenChallenges;
      
      private GameObject currentChallenge;
      private Challenge currentChallengeScript;
      private bool _challengeLoaded = false;
      private IEnumerator LoadNewChallenge()
      {
-          yield return new WaitForSeconds(timeBetweenChallenges);
+          yield return new WaitForSeconds(_gameSettings.TimeBetweenRounds);
           if (!_isGameOver)
           {
-               currentChallenge = Instantiate(challengePrefabs[Random.Range(0,challengePrefabs.Length)], transform);
+               currentChallenge = Instantiate(_challengePrefabs[Random.Range(0,_challengePrefabs.Count)], transform);
                currentChallengeScript = currentChallenge.GetComponent<Challenge>();
-               currentChallengeScript.Init(_playerList);
+               currentChallengeScript.Init(_playerList.ToArray());
                _respawnManager.SetChallenge(currentChallengeScript);
                _challengeLoaded = true;
           }
@@ -102,8 +118,8 @@ public class GameManager : MonoBehaviour
 
           GameObject[] winners = currentChallengeScript.GetWinners();
           GameObject[] losers = currentChallengeScript.GetLosers();
-          scoringSystem.UpdateWinners(winners);
-          scoringSystem.UpdateLosers(losers);
+          _scoringSystem.UpdateWinners(winners);
+          _scoringSystem.UpdateLosers(losers);
           CheckGameState();
           UnloadCurrentChallenge();
           if (!_isGameOver)
@@ -116,13 +132,13 @@ public class GameManager : MonoBehaviour
      #region Game State
 
      [Header("Game Settings")]
-     [SerializeField] private ScoringSystem scoringSystem;
+     private ScoringSystem _scoringSystem;
 
      private bool _isGameOver = false;
      
      private void CheckGameState()
      {
-          if (scoringSystem.IsGameOver())
+          if (_scoringSystem.IsGameOver())
           {
                EndGame();
           }
@@ -137,20 +153,20 @@ public class GameManager : MonoBehaviour
           _isGameOver = true;
 
           Debug.Log("------------\n Scores:\n------------");
-          scoringSystem.PrintScores();
+          _scoringSystem.PrintScores();
 
      }
 
      private void InitializeScoringSystem()
      {
-          scoringSystem.Init(_playerList);
+          _scoringSystem.Init(_playerList.ToArray());
      }
 
      #endregion
 
      #region Game Timer
 
-     [SerializeField] private float totalGameTime = Mathf.Infinity;
+     private float totalGameTime = Mathf.Infinity;
      private float _gameTimer;
 
      private void InitializeGameTimer()
@@ -171,15 +187,25 @@ public class GameManager : MonoBehaviour
      #region Stage
 
      [Header("Stage Settings")]
-     [SerializeField] private GameObject stage;
 
      private GameObject _currentStage;
 
      private void InitializeStage()
      {
-          _currentStage = Instantiate(stage, transform);
+          _currentStage = Instantiate(_gameSettings.StagePrefab, transform);
      }
 
      #endregion
 
+     public struct GameSettings
+     {
+          public List<PlayerData> PlayerData;
+          public List<GameObject> ChallengePrefabs;
+          public GameObject ScoringSystemPrefab;
+          public GameObject StagePrefab;
+          public float GameTime;
+          public float TimeBetweenRounds;
+          
+     }
+     
 }

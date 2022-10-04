@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData
 {
     public String playerName;
-    public GameObject playerInput;
+    public GameObject playerInputPrefab;
     public Sprite headSprite;
     public Color spriteColor;
 }
