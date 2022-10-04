@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &288169449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288169451}
+  - component: {fileID: 288169450}
+  m_Layer: 0
+  m_Name: GlobalSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &288169450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288169449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c609ac2c423744a78c6fbdb186526e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &288169451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288169449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.166716, y: 34.055687, z: 1.6497372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720995110
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1094697570}
   - component: {fileID: 1094697569}
+  - component: {fileID: 1094697571}
   m_Layer: 0
   m_Name: MainMenuManager
   m_TagString: Untagged
@@ -304,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7617cc49f3cb2465abaa1e016e7fc0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testButton: {fileID: 1469782737}
+  startButton: {fileID: 1469782737}
 --- !u!4 &1094697570
 Transform:
   m_ObjectHideFlags: 0
@@ -320,6 +365,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094697571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094697568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a23e2865df154fed8ed2103222eb274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playButton: {fileID: 1469782737}
 --- !u!1 &1469782736
 GameObject:
   m_ObjectHideFlags: 0

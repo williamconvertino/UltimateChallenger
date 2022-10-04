@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3172526928514868438}
   - component: {fileID: 8287543413260721945}
   m_Layer: 0
-  m_Name: Coop Right Player Input
+  m_Name: CoopRightPlayerInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
