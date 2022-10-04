@@ -16,7 +16,7 @@ class GameManagerInitWrapper : MonoBehaviour
     [SerializeField] private GameObject stagePrefab;
     [SerializeField] private GameObject scoringSystemPrefab;
     [SerializeField] private float gameTime = Mathf.Infinity;
-    [SerializeField] private float timeBetweenRounds = 3;
+    [SerializeField] private float timeBetweenRounds = 5;
 
     private void Start()
     {
