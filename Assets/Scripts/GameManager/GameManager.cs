@@ -49,12 +49,15 @@ public class GameManager : MonoBehaviour
      private void InitializePlayers()
      {
           _playerList = new List<GameObject>();
+          int currentPlayerID = 0;
           foreach (PlayerData pd in _gameSettings.PlayerData)
           {
                GameObject player = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"));
                player.AddComponent(pd.playerInputPrefab.GetComponent<PlayerInput>().GetType());
                player.GetComponent<SpriteRenderer>().color = pd.spriteColor;
-               player.AddComponent<PlayerInfo>().playerName = pd.playerName;
+               PlayerInfo playerInfo = player.AddComponent<PlayerInfo>();
+               playerInfo.playerName = pd.playerName;
+               playerInfo.playerID = pd.playerID;
                _playerList.Add(player);
           }
      }

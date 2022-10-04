@@ -20,6 +20,12 @@ class GameManagerInitWrapper : MonoBehaviour
 
     private void Start()
     {
+        int currentID = 0;
+        foreach (PlayerData playerData in players)
+        {
+            playerData.playerID = currentID;
+            currentID++;
+        }
         GameManager.GameSettings gameSettings = new GameManager.GameSettings()
         {
             PlayerData = players,
