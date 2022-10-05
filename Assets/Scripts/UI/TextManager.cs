@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TextManager : MonoBehaviour
 {
@@ -11,8 +12,14 @@ public class TextManager : MonoBehaviour
     public TMP_Text bottomGameStatus;
     public TMP_Text screenTitle;
     public TMP_Text screenSubtext;
-    public TMP_Text playerName;
-    public TMP_Text playerScore;
+    public TMP_Text playerNameA;
+    public TMP_Text playerScoreA;
+    public TMP_Text playerNameB;
+    public TMP_Text playerScoreB;
+    public TMP_Text playerNameC;
+    public TMP_Text playerScoreC;
+    public TMP_Text playerNameD;
+    public TMP_Text playerScoreD;
 
 
     private void Awake()
@@ -29,10 +36,22 @@ public class TextManager : MonoBehaviour
         textField.text = "";
     }
 
+    private void clearPlayer(TMP_Text textField1, TMP_Text textField2)
+    {
+        textField1.text = "";
+        textField2.text = "";
+    }
+
     //Set message
     private void setMessage(TMP_Text textField, string message)
     {
         textField.text = message;
+    }
+
+    private void setPlayer(TMP_Text textField1, TMP_Text textField2, string playerName, string playerScore)
+    {
+        textField1.text = playerName;
+        textField2.text = playerScore;
     }
 
     //Set time message
@@ -71,6 +90,25 @@ public class TextManager : MonoBehaviour
         clearText(bottomGameTitle);
     }
 
+    public void clearPlayerA()
+    {
+        clearPlayer(playerNameA, playerScoreA);
+    }
+
+    public void clearPlayerB()
+    {
+        clearPlayer(playerNameB, playerScoreB);
+    }
+
+    public void clearPlayerC()
+    {
+        clearPlayer(playerNameC, playerScoreC);
+    }
+
+    public void clearPlayerD()
+    {
+        clearPlayer(playerNameD, playerScoreD);
+    }
     //Setting bottom menu bar messages
     public void setBottomGameStatus(string gameStatus)
     {
@@ -82,13 +120,26 @@ public class TextManager : MonoBehaviour
         bottomGameTitle.text = gameTitle;
     }
 
-    //WIP
+    //setting player info
 
-    //public void setPlayerScore(String playerName, int score)
-    //{
+    public void setPlayerA(string playerName, string playerScore)
+    {
+        setPlayer(playerNameA, playerScoreA, playerName, playerScore);
+    }
 
-    //}
+    public void setPlayerB(string playerName, string playerScore)
+    {
+        setPlayer(playerNameB, playerScoreB, playerName, playerScore);
+    }
 
+    public void setPlayerC(string playerName, string playerScore)
+    {
+        setPlayer(playerNameC, playerScoreC, playerName, playerScore);
+    }
+    public void setPlayerD(string playerName, string playerScore)
+    {
+        setPlayer(playerNameD, playerScoreD, playerName, playerScore);
+    }
     //Setting screen messages
     public void setScreenTitle(string title)
     {

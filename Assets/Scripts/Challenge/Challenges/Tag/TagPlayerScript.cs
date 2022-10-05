@@ -49,6 +49,7 @@ public class TagPlayerScript : ChallengePlayerScript
             return false;
         }
         _spriteRenderer.color = Color.black;
+        
         return Tagged = true;
     }
 

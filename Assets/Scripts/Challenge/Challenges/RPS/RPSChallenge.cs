@@ -22,7 +22,8 @@ public class RPSChallenge : TimedChallenge
         }
         
         PopulateTeams();
-
+        TextManager.instance.showTimedScreenTitle("Starting RPS", 5);
+        TextManager.instance.setBottomGameTitle("Playing: RPS");
         Debug.Log("Starting RPS");
     }
 

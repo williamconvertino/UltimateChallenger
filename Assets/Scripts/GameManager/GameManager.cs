@@ -27,7 +27,11 @@ public class GameManager : MonoBehaviour
           StartCoroutine(LoadNewChallenge());
           _initialized = true;
           TextManager.instance.showTimedScreenTitle("Welcome to the game", 3);
-          TextManager.instance.clearScreenSubtext();
+        TextManager.instance.clearScreenSubtext();
+          TextManager.instance.setPlayerA("Player 3", "Wins: 0");
+        TextManager.instance.setPlayerB("Player 2", "Wins: 0");
+          TextManager.instance.setPlayerC("Player 1", "Wins: 0");
+        TextManager.instance.clearPlayerD();
     }
 
      private void Update()
@@ -98,7 +102,8 @@ public class GameManager : MonoBehaviour
           }
           if (!_isGameOver)
           {
-               currentChallenge = Instantiate(_challengePrefabs[Random.Range(0,_challengePrefabs.Count)], transform);
+            
+            currentChallenge = Instantiate(_challengePrefabs[Random.Range(0,_challengePrefabs.Count)], transform);
                currentChallengeScript = currentChallenge.GetComponent<Challenge>();
                currentChallengeScript.Init(_playerList.ToArray());
                _respawnManager.SetChallenge(currentChallengeScript);
@@ -110,7 +115,8 @@ public class GameManager : MonoBehaviour
      {
           if (_challengeLoaded)
           {
-               currentChallengeScript.Cleanup();
+            
+            currentChallengeScript.Cleanup();
                Destroy(currentChallenge);
                currentChallenge = null;
                currentChallengeScript = null;
@@ -160,9 +166,10 @@ public class GameManager : MonoBehaviour
      {
           if (_isGameOver)
           {
-               return;
+            return;
           }
           _isGameOver = true;
+        
 
           Debug.Log("------------\n Scores:\n------------");
           _scoringSystem.PrintScores();

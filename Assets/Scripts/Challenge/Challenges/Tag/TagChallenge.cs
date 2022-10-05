@@ -16,6 +16,8 @@ public class TagChallenge : TimedChallenge
         _playerScripts = GetPlayerScripts<TagPlayerScript>();
         TagPlayerScript initialTagger = _playerScripts[Random.Range(0,_playerScripts.Count)];
         initialTagger.Tag();
+        TextManager.instance.showTimedScreenTitle("Starting Tag", 5);
+        TextManager.instance.setBottomGameTitle("Playing: Tag");
         Debug.Log("Starting Tag");
     }
     #endregion

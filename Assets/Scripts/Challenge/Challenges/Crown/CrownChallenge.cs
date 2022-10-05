@@ -16,6 +16,8 @@ public class CrownChallenge : TimedChallenge
         _playerScripts = GetPlayerScripts<CrownPlayerScript>();
         CrownPlayerScript initialCrown = _playerScripts[Random.Range(0,_playerScripts.Count)];
         initialCrown.Crown();
+        TextManager.instance.showTimedScreenTitle("Starting Crown", 5);
+        TextManager.instance.setBottomGameTitle("Playing: Crown");
         Debug.Log("Starting Crown");
     }
     #endregion
