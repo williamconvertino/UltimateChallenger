@@ -11,11 +11,16 @@ public class RespawnManager : MonoBehaviour
 
     public List<GameObject> _allPlayers;
     public List<GameObject> _activePlayers;
+
+    private Stage _currentStage;
+    private Bounds _stageBounds;
     
     public void Init(List<GameObject> players, GameObject stage)
     {
         _allPlayers = players;
         _activePlayers = new List<GameObject>(players);
+        _currentStage = stage.GetComponent<Stage>();
+        _stageBounds = _currentStage.Bounds;
         SetRespawners(stage);
         SpawnAllPlayers();
     }
@@ -118,7 +123,7 @@ public class RespawnManager : MonoBehaviour
 
     private bool PlayerNeedsRespawn(GameObject player)
     {
-        return player.transform.position.y <= -5;
+        return !_stageBounds.Contains(player.transform.position);
     }
 
     #endregion
