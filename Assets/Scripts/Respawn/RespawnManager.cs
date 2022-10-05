@@ -58,7 +58,6 @@ public class RespawnManager : MonoBehaviour
         Vector2 position = GetBestRespawner().GetUsableLocation();
         player.transform.position = position;
         _activePlayers.Add(player);
-        player.SetActive(true);
     }
 
     #endregion

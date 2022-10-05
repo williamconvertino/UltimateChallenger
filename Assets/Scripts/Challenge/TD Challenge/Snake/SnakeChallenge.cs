@@ -32,7 +32,6 @@ public class SnakeChallenge : TDChallenge
             }
         }
 
-        print(livePlayers);
         if (livePlayers < 2)
         {
             IsChallengeOver = true;

@@ -80,10 +80,11 @@ public class SnakePlayerScript : TDChallengePlayerScript
     {
         IsOut = true;
         gameObject.SetActive(false);
-        foreach (GameObject segment in _segments)
+        for (int i = 0; i < _segments.Count; i++)
         {
-            Destroy(segment);
+            Destroy(_segments[i].gameObject);
         }
+        _segments.Clear();
     }
     
     
@@ -92,9 +93,10 @@ public class SnakePlayerScript : TDChallengePlayerScript
         base.Cleanup();
         _playerMovement.UseOverrideVelocity = false;
         gameObject.SetActive(true);
-        foreach (GameObject segment in _segments)
+        for (int i = 0; i < _segments.Count; i++)
         {
-            Destroy(segment);
+            Destroy(_segments[i].gameObject);
         }
+        _segments.Clear();
     }
 }
