@@ -33,14 +33,26 @@ public class TDPlayerMovement : MonoBehaviour
 
     #region Movement
     [Header("Movement")]
-    [SerializeField] private float speedScale = 6.0f;
+    public float speedScale = 6.0f;
 
     private Vector2 _velocity = Vector2.zero;
     public Vector2 GetVelocity => _velocity;
+
+    public Vector2 OverrideVelocity;
+    public bool UseOverrideVelocity = false;
+
     private int _directionX = 1;
     private int _directionY = 1;
+    
+    private int _realDirectionX = 0;
+    private int _realDirectionY = 0;
     public int GetDirectionX => _directionX;
     public int GetDirectionY => _directionY;
+    
+    public int GetRealDirectionX => _realDirectionX;
+    public int GetRealDirectionY => _realDirectionY;
+
+    
     private PlayerMovementInput.TDMovementInput _input;
     
     //Moves the player according to physics and their input.
@@ -48,6 +60,9 @@ public class TDPlayerMovement : MonoBehaviour
     {
         _velocity = new Vector2(_input.DirX, _input.DirY).normalized * speedScale;
 
+        _realDirectionX = Math.Sign(_input.DirX);
+        _realDirectionY = Math.Sign(_input.DirY);
+        
         if (_input.DirX > 0)
         {
             _directionX = 1;
@@ -66,6 +81,11 @@ public class TDPlayerMovement : MonoBehaviour
             _directionY = -1;
         }
 
+        if (UseOverrideVelocity)
+        {
+            _velocity = OverrideVelocity;
+        }
+        
         _rb2d.velocity = new Vector2(_velocity.x, _velocity.y);
     }
     
