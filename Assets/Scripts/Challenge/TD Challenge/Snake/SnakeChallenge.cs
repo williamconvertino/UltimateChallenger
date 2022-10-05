@@ -16,6 +16,11 @@ public class SnakeChallenge : TDChallenge
         player.GetComponent<SnakePlayerScript>().Hit();
     }
 
+    private void Update()
+    {
+        CheckVictory();
+    }
+    
     protected override void CheckVictory()
     {
         int livePlayers = 0;
@@ -27,6 +32,7 @@ public class SnakeChallenge : TDChallenge
             }
         }
 
+        print(livePlayers);
         if (livePlayers < 2)
         {
             IsChallengeOver = true;

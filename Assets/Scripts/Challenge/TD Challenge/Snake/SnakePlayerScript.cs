@@ -89,7 +89,7 @@ public class SnakePlayerScript : TDChallengePlayerScript
     
     public override void Cleanup()
     {
-        
+        base.Cleanup();
         _playerMovement.UseOverrideVelocity = false;
         gameObject.SetActive(true);
         foreach (GameObject segment in _segments)
