@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a23e2865df154fed8ed2103222eb274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 720995112}
   TotalTimeValueLabel: {fileID: 1514061197}
   TimeBetweenRoundsValueLabel: {fileID: 1642679779}
 --- !u!1 &1337982318 stripped

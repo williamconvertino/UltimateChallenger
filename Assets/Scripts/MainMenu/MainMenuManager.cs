@@ -10,6 +10,8 @@ public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager Instance { get; private set; }
 
+    public Camera mainCamera;
+
     private int[] PossibleTotalTimes = new int[] { 15, 30, 45, 60, 90, 120, 180 };
     private int TotalTimeIndex = 3;
     public TMP_Text TotalTimeValueLabel;
@@ -111,6 +113,12 @@ public class MainMenuManager : MonoBehaviour
     {
         TimeBetweenRoundsValueLabel.text = PossibleTimeBetweenRounds[TimeBetweenRoundsIndex].ToString();
         GlobalSettingsSingleton.Instance.TimeBetweenRounds = PossibleTimeBetweenRounds[TimeBetweenRoundsIndex];
+    }
+
+    public void MoveCameraNext()
+    {
+        Vector3 previous = mainCamera.transform.position;
+        mainCamera.transform.position = new Vector3(previous.x + 20, previous.y, previous.z);
     }
 
 }
