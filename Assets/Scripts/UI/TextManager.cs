@@ -163,5 +163,26 @@ public class TextManager : MonoBehaviour
         showMessageForSeconds(screenSubtext, message, time);
     }
 
+    //don't need to update playername everytime
+    public void setTextField(string textField, string playerName, int score)
+    {
+        switch (textField)
+        {
+            case "A":
+                setPlayerA(playerName, score.ToString());
+                break;
+            case "B":
+                setPlayerB(playerName, score.ToString());
+                break;
+            case "C":
+                setPlayerC(playerName, score.ToString());
+                break;
+            case "D":
+                setPlayerD(playerName, score.ToString());
+                break;
+            default:
+                break;
+        }
+    }
 
 }

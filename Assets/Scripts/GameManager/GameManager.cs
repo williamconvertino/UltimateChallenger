@@ -28,10 +28,6 @@ public class GameManager : MonoBehaviour
           _initialized = true;
           TextManager.instance.showTimedScreenTitle("Welcome to the game", 3);
         TextManager.instance.clearScreenSubtext();
-          TextManager.instance.setPlayerA("Player 3", "Wins: 0");
-        TextManager.instance.setPlayerB("Player 2", "Wins: 0");
-          TextManager.instance.setPlayerC("Player 1", "Wins: 0");
-        TextManager.instance.clearPlayerD();
     }
 
      private void Update()
@@ -151,6 +147,7 @@ public class GameManager : MonoBehaviour
           GameObject[] losers = currentChallengeScript.GetLosers();
           _scoringSystem.UpdateWinners(winners);
           _scoringSystem.UpdateLosers(losers);
+          _scoringSystem.PrintScores();
           CheckGameState();
           UnloadCurrentChallenge();
           if (!_isGameOver)
