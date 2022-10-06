@@ -207,28 +207,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &616417183 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1853236552353681815, guid: d883ae98829df4481b35e48506f90df1, type: 3}
-  m_PrefabInstance: {fileID: 1872970671}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &715137784 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1853236551652489568, guid: d883ae98829df4481b35e48506f90df1, type: 3}
-  m_PrefabInstance: {fileID: 1872970671}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1355577354 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1853236552055688916, guid: d883ae98829df4481b35e48506f90df1, type: 3}
@@ -246,8 +224,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2466a9954677842ffa7f7a54b0e354d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleText: {fileID: 715137784}
-  timer: {fileID: 616417183}
+  bottomGameTitle: {fileID: 0}
+  bottomGameStatus: {fileID: 0}
+  screenTitle: {fileID: 0}
+  screenSubtext: {fileID: 0}
+  playerNameA: {fileID: 0}
+  playerScoreA: {fileID: 0}
+  playerNameB: {fileID: 0}
+  playerScoreB: {fileID: 0}
+  playerNameC: {fileID: 0}
+  playerScoreC: {fileID: 0}
+  playerNameD: {fileID: 0}
+  playerScoreD: {fileID: 0}
 --- !u!1 &1438165736
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +275,7 @@ MonoBehaviour:
     playerID: 0
     playerInputPrefab: {fileID: 1176882453188542781, guid: deea14e88c9313149bdf5d3d9502557d, type: 3}
     headSprite: {fileID: 0}
-    spriteColor: {r: 0.8666667, g: 0.10196078, b: 0.32358834, a: 1}
+    spriteColor: {r: 0.7414518, g: 0.36078432, b: 0.8666667, a: 1}
   - playerName: P3
     playerID: 0
     playerInputPrefab: {fileID: 1229080502553421552, guid: 42737d6335e8b7e43b71d435061dffa5, type: 3}
@@ -298,6 +286,7 @@ MonoBehaviour:
   - {fileID: 2383912417458185922, guid: c96f3ab127a3b76488bc173a6d5d233b, type: 3}
   - {fileID: 4262110333574143648, guid: 74f42dce926df284ba6d6f8729f498af, type: 3}
   - {fileID: 7358870396893654953, guid: 64c9026fa736f38448b41d9006b77559, type: 3}
+  - {fileID: 4393922073851393597, guid: d2ec231f95cba444dbeb42bd31252400, type: 3}
   stagePrefab: {fileID: 5267289161324285110, guid: d2184922055bfe14f8462f949631cb7c, type: 3}
   scoringSystemPrefab: {fileID: 232204447587287596, guid: b6a4f54a262f02b42bcefddb6d5c4306, type: 3}
   gameTime: Infinity
