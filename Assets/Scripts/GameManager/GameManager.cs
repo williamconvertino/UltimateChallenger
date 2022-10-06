@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
           _challengePrefabs = settings.ChallengePrefabs;
           _scoringSystem = Instantiate(settings.ScoringSystemPrefab).GetComponent<ScoringSystem>();
           totalGameTime = settings.GameTime;
+          _challengeFrequencies = new Dictionary<GameObject, int>();
+          foreach (GameObject challengePrefab in _challengePrefabs)
+          {
+               _challengeFrequencies[challengePrefab] = 0;
+          }
           InitializeStage();
           InitializePlayers();
           InitializeGameTimer();
@@ -82,7 +87,9 @@ public class GameManager : MonoBehaviour
      [Header("Challenge Settings")]
      private List<GameObject> _challengePrefabs;
      private float _timeBetweenChallenges;
-     
+
+     private Dictionary<GameObject, int> _challengeFrequencies;
+
      private GameObject currentChallenge;
      private Challenge currentChallengeScript;
      private bool _challengeLoaded = false;
@@ -98,8 +105,27 @@ public class GameManager : MonoBehaviour
           }
           if (!_isGameOver)
           {
-            
-            currentChallenge = Instantiate(_challengePrefabs[Random.Range(0,_challengePrefabs.Count)], transform);
+
+               List<GameObject> possibleChallenges = new List<GameObject>();
+               int minChallengeFreq = 99999;
+               foreach (GameObject challengePrefab in _challengePrefabs)
+               {
+                    if (_challengeFrequencies[challengePrefab] < minChallengeFreq)
+                    {
+                         minChallengeFreq = _challengeFrequencies[challengePrefab];
+                         possibleChallenges.Clear();
+                    }
+
+                    if (_challengeFrequencies[challengePrefab] == minChallengeFreq)
+                    {
+                         possibleChallenges.Add(challengePrefab);
+                    }
+               }
+
+               GameObject chosenPrefab = possibleChallenges[Random.Range(0, possibleChallenges.Count)];
+               currentChallenge = Instantiate(chosenPrefab, transform);
+
+               _challengeFrequencies[chosenPrefab]++;
                currentChallengeScript = currentChallenge.GetComponent<Challenge>();
                currentChallengeScript.InitStageHandlers((stage) => SetStage(stage), () => ResetStage());
                currentChallengeScript.Init(_playerList.ToArray(), _defaultStage);
