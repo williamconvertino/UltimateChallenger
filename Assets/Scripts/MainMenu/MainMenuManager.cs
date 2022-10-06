@@ -54,13 +54,15 @@ public class MainMenuManager : MonoBehaviour
         GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
         GameObject crownChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Crown");
         GameObject dartChallenge = Resources.Load<GameObject>("Prefabs/Challenge/DartHunt");
+        GameObject snakeChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Snake");
+        GameObject hopperChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Hopper_02");
 
         GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
         GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>("Prefabs/Stages/Battlefield");
-        GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge };
+        GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
         GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data };
-        GlobalSettingsSingleton.Instance.GameTime = 60;
-        GlobalSettingsSingleton.Instance.TimeBetweenRounds = 3;
+
+        //TODO need options to change stage, maybe challenges
     }
 
     public void IncrementTime()
