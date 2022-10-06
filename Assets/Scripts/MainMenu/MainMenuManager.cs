@@ -14,6 +14,10 @@ public class MainMenuManager : MonoBehaviour
     private int TotalTimeIndex = 3;
     public TMP_Text TotalTimeValueLabel;
 
+    private int[] PossibleTimeBetweenRounds = new int[] { 2, 3, 4, 5, 6, 7, 8 };
+    private int TimeBetweenRoundsIndex = 3;
+    public TMP_Text TimeBetweenRoundsValueLabel;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -31,6 +35,7 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         UpdateTimeDisplay();
+        UpdateTimeBetweenRoundsDisplay();
 
         PlayerData testPlayerData = new PlayerData();
         testPlayerData.playerName = "Player1";
@@ -81,4 +86,29 @@ public class MainMenuManager : MonoBehaviour
         TotalTimeValueLabel.text = PossibleTotalTimes[TotalTimeIndex].ToString();
         GlobalSettingsSingleton.Instance.GameTime = PossibleTotalTimes[TotalTimeIndex];
     }
+
+    public void IncrementTimeBetweenRounds()
+    {
+        if (TimeBetweenRoundsIndex < PossibleTimeBetweenRounds.Length - 1)
+        {
+            TimeBetweenRoundsIndex++;
+        }
+        UpdateTimeBetweenRoundsDisplay();
+    }
+
+    public void DecrementTimeBetweenRounds()
+    {
+        if (TimeBetweenRoundsIndex > 0)
+        {
+            TimeBetweenRoundsIndex--;
+        }
+        UpdateTimeBetweenRoundsDisplay();
+    }
+
+    private void UpdateTimeBetweenRoundsDisplay()
+    {
+        TimeBetweenRoundsValueLabel.text = PossibleTimeBetweenRounds[TimeBetweenRoundsIndex].ToString();
+        GlobalSettingsSingleton.Instance.TimeBetweenRounds = PossibleTimeBetweenRounds[TimeBetweenRoundsIndex];
+    }
+
 }

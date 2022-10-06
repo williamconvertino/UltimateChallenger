@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7636078935449031105}
   - component: {fileID: 7636078935449031106}
   m_Layer: 0
-  m_Name: TotalTimeLabel
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 7636078936200918043}
   - component: {fileID: 7636078936200918036}
   m_Layer: 0
-  m_Name: TotalTimeDecrementText
+  m_Name: DecrementText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 7636078936591112913}
   - component: {fileID: 7636078936591112914}
   m_Layer: 0
-  m_Name: TotalTimeIncrementText
+  m_Name: IncrementText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 7636078937084420593}
   - component: {fileID: 7636078937084420594}
   m_Layer: 0
-  m_Name: TotalTimeIncrementObject
+  m_Name: IncrementObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 7636078937280320316}
   - component: {fileID: 7636078937280320317}
   m_Layer: 0
-  m_Name: TotalTimeDecrementObject
+  m_Name: DecrementObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 7636078937394848013}
   - component: {fileID: 7636078937394848014}
   m_Layer: 0
-  m_Name: TotalTimeValueText
+  m_Name: ValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 7636078937455162685}
   - component: {fileID: 7636078937455162684}
   m_Layer: 0
-  m_Name: TotalTimeValueObject
+  m_Name: ValueObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
