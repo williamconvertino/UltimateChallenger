@@ -29,11 +29,13 @@ public class SnakePlayerScript : TDChallengePlayerScript
         _playerCollider = GetComponent<BoxCollider2D>();
         _playerMovement = GetComponent<TDPlayerMovement>();
         _recentPlayerDirection = Vector2.up;
+        _playerVelocity = _playerMovement.speedScale;
         _playerMovement.UseOverrideVelocity = true;
         initialized = true;
     }
 
     private Vector2 _recentPlayerDirection;
+    private float _playerVelocity;
     protected void Update()
     {
         if (_playerMovement.GetRealDirectionX != 0 || _playerMovement.GetRealDirectionY != 0)
@@ -41,7 +43,7 @@ public class SnakePlayerScript : TDChallengePlayerScript
             _recentPlayerDirection = new Vector2(_playerMovement.GetRealDirectionX, _playerMovement.GetRealDirectionY);
         }
         
-        _playerMovement.OverrideVelocity = new Vector2( _recentPlayerDirection.x , _recentPlayerDirection.y).normalized * _playerMovement.speedScale;
+        _playerMovement.OverrideVelocity = new Vector2( _recentPlayerDirection.x , _recentPlayerDirection.y).normalized * _playerVelocity;
         
         if (_newSegmentTimer > 0)
         {
@@ -55,8 +57,10 @@ public class SnakePlayerScript : TDChallengePlayerScript
             SpriteRenderer segmentRenderer = segment.GetComponent<SpriteRenderer>();
             segmentRenderer.color = GetComponent<SpriteRenderer>().color;
             segmentRenderer.size = _playerCollider.size / 4;
-            
             _segments.Add(segment);
+
+            _playerVelocity += 0.7f;
+            
             _newSegmentTimer = _newSegmentTime;
         }
 

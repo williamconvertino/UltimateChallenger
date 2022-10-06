@@ -9,7 +9,8 @@ public class SnakeChallenge : TDChallenge
     {
         base.Init(players, stage);
         _playerScripts = AddScriptToPlayers<SnakePlayerScript>();
-        _setStage(Resources.Load<GameObject>("Prefabs/Stages/TDGameBorders").GetComponent<Stage>());
+        snakeStage = Instantiate(Resources.Load<GameObject>("Prefabs/Stages/TDGameBorders").GetComponent<Stage>());
+        _setStage(snakeStage);
         Debug.Log("Starting Snake");
     }
     
@@ -72,5 +73,7 @@ public class SnakeChallenge : TDChallenge
     {
         base.Cleanup();
         _resetStage();
+        snakeStage.gameObject.SetActive(false);
+        Destroy(snakeStage.gameObject);
     }
 }
