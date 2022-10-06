@@ -287,6 +287,8 @@ MonoBehaviour:
   - {fileID: 4262110333574143648, guid: 74f42dce926df284ba6d6f8729f498af, type: 3}
   - {fileID: 7358870396893654953, guid: 64c9026fa736f38448b41d9006b77559, type: 3}
   - {fileID: 4393922073851393597, guid: d2ec231f95cba444dbeb42bd31252400, type: 3}
+  - {fileID: 2780697661623057221, guid: 920b2224c6bada04b930763ce5e8d1e8, type: 3}
+  - {fileID: 2780697661623057221, guid: 2a18d19bb6f53f04d84c2f018c600edf, type: 3}
   stagePrefab: {fileID: 5267289161324285110, guid: d2184922055bfe14f8462f949631cb7c, type: 3}
   scoringSystemPrefab: {fileID: 232204447587287596, guid: b6a4f54a262f02b42bcefddb6d5c4306, type: 3}
   gameTime: Infinity
