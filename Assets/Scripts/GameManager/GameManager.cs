@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
           }
           InitializeStage();
           InitializePlayers();
+          InitializeCamera();
           InitializeGameTimer();
           InitializeRespawnManager();
           InitializeScoringSystem();
@@ -70,6 +71,13 @@ public class GameManager : MonoBehaviour
      
      
      #endregion
+
+     private GameObject _dynamicCamera;
+     private void InitializeCamera()
+     {
+          _dynamicCamera = Instantiate(Resources.Load<GameObject>("Prefabs/Camera/DynamicCamera"));
+          _dynamicCamera.GetComponent<DynamicCamera>().Init(_playerList);
+     }
 
      #region Respawn
 
