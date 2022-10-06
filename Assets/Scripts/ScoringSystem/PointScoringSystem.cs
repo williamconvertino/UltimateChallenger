@@ -11,6 +11,7 @@ public class PointScoringSystem : ScoringSystem
     private int _highestScore = 0;
     private Dictionary<GameObject, int> _playerScore;
     private Dictionary<GameObject, string> playerToTextField;
+    private List<string> playersInTheLead;
     private string[] textFields = { "A", "B", "C", "D" };
 
     public override void Init(GameObject[] players)
@@ -18,6 +19,7 @@ public class PointScoringSystem : ScoringSystem
         base.Init(players);
         _playerScore = new Dictionary<GameObject, int>();
         playerToTextField = new Dictionary<GameObject, string>();
+        playersInTheLead = new List<string>();
 
         TextManager.instance.clearPlayerA();
         TextManager.instance.clearPlayerB();
@@ -47,7 +49,6 @@ public class PointScoringSystem : ScoringSystem
             _playerScore[player]++;
             if (_playerScore[player] > _highestScore)
             {
-                TextManager.instance.setBottomGameStatus("In the lead: " + player.GetComponent<PlayerInfo>().playerName);
                 _highestScore++;
             }
         }
@@ -74,15 +75,17 @@ public class PointScoringSystem : ScoringSystem
 
     public override void PrintScores()
     {
-        foreach (GameObject player in _playerScore.Keys)
-        {
-            Debug.Log(player.GetComponent<PlayerInfo>().playerName + ": " + _playerScore[player] + " points.");
-        }
-
+        playersInTheLead.Clear();
         foreach (GameObject player in Players)
         {
+            Debug.Log(player.GetComponent<PlayerInfo>().playerName + ": " + _playerScore[player] + " points.");
             TextManager.instance.setTextField(playerToTextField[player], player.GetComponent<PlayerInfo>().playerName, _playerScore[player]);
+            if (_playerScore[player] == _highestScore)
+            {
+                playersInTheLead.Add(player.GetComponent<PlayerInfo>().playerName);
+            }
         }
+        TextManager.instance.setBottomGameStatus("In the lead: " + String.Join(", ", playersInTheLead));
     }
 
     public void UpdateScores()
