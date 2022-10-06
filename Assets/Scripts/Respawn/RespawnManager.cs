@@ -15,13 +15,11 @@ public class RespawnManager : MonoBehaviour
     private Stage _currentStage;
     private Bounds _stageBounds;
     
-    public void Init(List<GameObject> players, GameObject stage)
+    public void Init(List<GameObject> players, Stage stage)
     {
         _allPlayers = players;
         _activePlayers = new List<GameObject>(players);
-        _currentStage = stage.GetComponent<Stage>();
-        _stageBounds = _currentStage.Bounds;
-        SetRespawners(stage);
+        SetStage(stage);
         SpawnAllPlayers();
     }
 
@@ -38,6 +36,13 @@ public class RespawnManager : MonoBehaviour
     public void SetChallenge(Challenge challengeScript)
     {
         _currentChallenge = challengeScript;
+    }
+
+    public void SetStage(Stage stage)
+    {
+        _currentStage = stage;
+        _stageBounds = _currentStage.Bounds;
+        SetRespawners(stage);
     }
 
     #endregion
@@ -65,9 +70,9 @@ public class RespawnManager : MonoBehaviour
     #region Respawners
     private Respawner[] _respawners;
 
-    private void SetRespawners(GameObject stage)
+    private void SetRespawners(Stage stage)
     {
-        _respawners = stage.GetComponentsInChildren<Respawner>();
+        _respawners = stage.gameObject.GetComponentsInChildren<Respawner>();
     }
     
     //Finds the respawner whose nearest player is the greatest distance away.

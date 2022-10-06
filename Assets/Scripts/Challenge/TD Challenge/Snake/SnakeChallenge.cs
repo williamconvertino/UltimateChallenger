@@ -4,10 +4,12 @@ using UnityEngine;
 public class SnakeChallenge : TDChallenge
 {
     private List<SnakePlayerScript> _playerScripts;
-    public override void Init(GameObject[] players)
+    private Stage snakeStage;
+    public override void Init(GameObject[] players, Stage stage)
     {
-        base.Init(players);
+        base.Init(players, stage);
         _playerScripts = AddScriptToPlayers<SnakePlayerScript>();
+        _setStage(Resources.Load<GameObject>("Prefabs/Stages/TDGameBorders").GetComponent<Stage>());
         Debug.Log("Starting Snake");
     }
     
@@ -65,5 +67,10 @@ public class SnakeChallenge : TDChallenge
 
         return losers.ToArray();
     }
-    
+
+    public override void Cleanup()
+    {
+        base.Cleanup();
+        _resetStage();
+    }
 }

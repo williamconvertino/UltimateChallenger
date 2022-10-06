@@ -9,9 +9,9 @@ public class TagChallenge : TimedChallenge
     #region Initialization
     
     private List<TagPlayerScript> _playerScripts;
-    public override void Init(GameObject[] players)
+    public override void Init(GameObject[] players, Stage stage)
     {
-        base.Init(players);
+        base.Init(players, stage);
         AddScriptToPlayers<TagPlayerScript>();
         _playerScripts = GetPlayerScripts<TagPlayerScript>();
         TagPlayerScript initialTagger = _playerScripts[Random.Range(0,_playerScripts.Count)];

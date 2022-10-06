@@ -4,9 +4,9 @@ public abstract class TimedChallenge : Challenge
 {
     #region Initialization
 
-    public override void Init(GameObject[] players)
+    public override void Init(GameObject[] players, Stage stage)
     {
-        base.Init(players);
+        base.Init(players, stage);
         timer = challengeTime;
     }
     

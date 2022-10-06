@@ -9,9 +9,9 @@ public class CrownChallenge : TimedChallenge
     #region Initialization
     
     private List<CrownPlayerScript> _playerScripts;
-    public override void Init(GameObject[] players)
+    public override void Init(GameObject[] players, Stage stage)
     {
-        base.Init(players);
+        base.Init(players,stage);
         AddScriptToPlayers<CrownPlayerScript>();
         _playerScripts = GetPlayerScripts<CrownPlayerScript>();
         CrownPlayerScript initialCrown = _playerScripts[Random.Range(0,_playerScripts.Count)];

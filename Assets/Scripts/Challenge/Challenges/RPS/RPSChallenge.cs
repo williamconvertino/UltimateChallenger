@@ -12,9 +12,9 @@ public class RPSChallenge : TimedChallenge
     private List<RPSPlayerScript> _playerScripts;
     private Dictionary<RPSTeam, int> _teamScores;
     private RPSTeam[] _allTeams = new RPSTeam[] { RPSTeam.Paper , RPSTeam.Rock, RPSTeam.Scissors};
-    public override void Init(GameObject[] players)
+    public override void Init(GameObject[] players, Stage stage)
     {
-        base.Init(players);
+        base.Init(players, stage);
         _playerScripts = AddScriptToPlayers<RPSPlayerScript>();
         _teamScores = new Dictionary<RPSTeam, int>();
         foreach (RPSTeam team in new[] { RPSTeam.Rock, RPSTeam.Paper, RPSTeam.Scissors }) {

@@ -10,9 +10,9 @@ public class DartHuntChallenge : Challenge
     
     private List<DartHuntPlayerScript> _playerScripts;
     private List<Dart> _activeDarts;
-    public override void Init(GameObject[] players)
+    public override void Init(GameObject[] players, Stage stage)
     {
-        base.Init(players);
+        base.Init(players, stage);
         AddScriptToPlayers<DartHuntPlayerScript>();
         _playerScripts = GetPlayerScripts<DartHuntPlayerScript>();
         _activeDarts = new List<Dart>();

@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
      private void InitializeRespawnManager()
      {
           _respawnManager = gameObject.AddComponent<RespawnManager>();
-          _respawnManager.Init(_playerList, _currentStage);
+          _respawnManager.Init(_playerList, _defaultStage);
      }
 
      #endregion
@@ -105,7 +105,8 @@ public class GameManager : MonoBehaviour
             
             currentChallenge = Instantiate(_challengePrefabs[Random.Range(0,_challengePrefabs.Count)], transform);
                currentChallengeScript = currentChallenge.GetComponent<Challenge>();
-               currentChallengeScript.Init(_playerList.ToArray());
+               currentChallengeScript.InitStageHandlers((stage) => SetStage(stage), () => ResetStage());
+               currentChallengeScript.Init(_playerList.ToArray(), _defaultStage);
                _respawnManager.SetChallenge(currentChallengeScript);
                _challengeLoaded = true;
           }
@@ -122,6 +123,18 @@ public class GameManager : MonoBehaviour
                currentChallengeScript = null;
                _challengeLoaded = false;
           }
+     }
+
+     private void SetStage(Stage stage)
+     {
+          _defaultStage.gameObject.SetActive(false);
+          _respawnManager.SetStage(stage);
+     }
+     
+     private void ResetStage()
+     {
+          _defaultStage.gameObject.SetActive(true);
+          _respawnManager.SetStage(_defaultStage);
      }
 
      #endregion
@@ -207,11 +220,11 @@ public class GameManager : MonoBehaviour
 
      [Header("Stage Settings")]
 
-     private GameObject _currentStage;
+     private Stage _defaultStage;
 
      private void InitializeStage()
      {
-          _currentStage = Instantiate(_gameSettings.StagePrefab, transform);
+          _defaultStage = Instantiate(_gameSettings.StagePrefab, transform).GetComponent<Stage>();
      }
 
      #endregion

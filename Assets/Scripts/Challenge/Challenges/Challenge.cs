@@ -9,10 +9,20 @@ public abstract class Challenge : MonoBehaviour
 
     #region Initialization
     protected GameObject[] Players;
-    public virtual void Init(GameObject[] players)
+    private Stage _stage;
+    public virtual void Init(GameObject[] players, Stage stage)
     
     {
         Players = players;
+        _stage = stage;
+    }
+
+    protected Action<Stage> _setStage;
+    protected Action _resetStage;
+    public virtual void InitStageHandlers(Action<Stage> setStage, Action resetStage)
+    {
+        _setStage = setStage;
+        _resetStage = resetStage;
     }
     #endregion
 
