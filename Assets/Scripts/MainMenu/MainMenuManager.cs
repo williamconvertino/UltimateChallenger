@@ -79,5 +79,6 @@ public class MainMenuManager : MonoBehaviour
     private void UpdateTimeDisplay()
     {
         TotalTimeValueLabel.text = PossibleTotalTimes[TotalTimeIndex].ToString();
+        GlobalSettingsSingleton.Instance.GameTime = PossibleTotalTimes[TotalTimeIndex];
     }
 }
