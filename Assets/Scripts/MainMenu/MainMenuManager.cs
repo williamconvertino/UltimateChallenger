@@ -7,21 +7,9 @@ using Player;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public Button playButton;
 
     // Start is called before the first frame update
     void Start()
-    {
-        playButton.onClick.AddListener(StartGame);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void StartGame()
     {
         PlayerData testPlayerData = new PlayerData();
         testPlayerData.playerName = "Alex";
@@ -44,17 +32,21 @@ public class MainMenuManager : MonoBehaviour
         testPlayer3Data.headSprite = null;
         testPlayer3Data.spriteColor = Color.green;
 
-        GameObject testChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
+        GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
+        GameObject crownChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Crown");
+        GameObject dartChallenge = Resources.Load<GameObject>("Prefabs/Challenge/DartHunt");
 
         GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
         GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>("Prefabs/Stages/Battlefield");
-        GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { testChallenge };
+        GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge };
         GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data, testPlayer3Data };
         GlobalSettingsSingleton.Instance.GameTime = 60;
         GlobalSettingsSingleton.Instance.TimeBetweenRounds = 3;
+    }
 
-
-        Scene gameScene = SceneManager.GetSceneByName("Game Scene");
-        SceneManager.LoadScene("Game Scene");
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
