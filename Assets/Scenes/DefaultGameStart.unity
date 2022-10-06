@@ -269,18 +269,18 @@ MonoBehaviour:
   - playerName: P1
     playerID: 0
     playerInputPrefab: {fileID: 1176882453188542781, guid: 3257624fe321afe48bf7e7e088997afa, type: 3}
-    headSprite: {fileID: 0}
     spriteColor: {r: 0.10153075, g: 0.78644985, b: 0.8679245, a: 1}
+    headSprite: {fileID: 0}
   - playerName: P2
     playerID: 0
     playerInputPrefab: {fileID: 1176882453188542781, guid: deea14e88c9313149bdf5d3d9502557d, type: 3}
-    headSprite: {fileID: 0}
     spriteColor: {r: 0.7414518, g: 0.36078432, b: 0.8666667, a: 1}
+    headSprite: {fileID: 0}
   - playerName: P3
     playerID: 0
     playerInputPrefab: {fileID: 1229080502553421552, guid: 42737d6335e8b7e43b71d435061dffa5, type: 3}
-    headSprite: {fileID: 0}
     spriteColor: {r: 0.10196078, g: 0.8666667, b: 0.26402637, a: 1}
+    headSprite: {fileID: 0}
   challengePrefabs:
   - {fileID: 2098027547859109283, guid: b93c7715815208341aad4237c3ab690e, type: 3}
   - {fileID: 2383912417458185922, guid: c96f3ab127a3b76488bc173a6d5d233b, type: 3}

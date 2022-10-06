@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8415220034320320936}
   - component: {fileID: 7266332657544892105}
   - component: {fileID: 9011551353450193484}
+  - component: {fileID: 7702758538799691735}
   m_Layer: 8
   m_Name: OW Platform
   m_TagString: Environment
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7541420290648496352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.94, y: -1.488, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72,15 +73,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2130753145
+  m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6981132, g: 0.67191863, b: 0.13435383, a: 1}
+  m_Sprite: {fileID: -1730667885, guid: fd779aaf9c2450a40adc884f684ecbd9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_FlipY: 1
+  m_DrawMode: 1
+  m_Size: {x: 1, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.7224549}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.12, y: 0, z: 1.0699999, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3.06, y: 1.95}
+    newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.055149317}
   m_EdgeRadius: 0
 --- !u!251 &9011551353450193484
 PlatformEffector2D:
@@ -131,3 +132,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &7702758538799691735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7541420290648496352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d66975c7477e0a45aea459866538c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleClouds:
+  - {fileID: -1730667885, guid: fd779aaf9c2450a40adc884f684ecbd9, type: 3}
+  - {fileID: 766431536, guid: fd779aaf9c2450a40adc884f684ecbd9, type: 3}
+  - {fileID: -274433352, guid: fd779aaf9c2450a40adc884f684ecbd9, type: 3}
+  - {fileID: 682946155, guid: fd779aaf9c2450a40adc884f684ecbd9, type: 3}
