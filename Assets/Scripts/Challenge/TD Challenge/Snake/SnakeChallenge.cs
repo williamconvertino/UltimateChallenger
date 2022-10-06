@@ -5,11 +5,12 @@ public class SnakeChallenge : TDChallenge
 {
     private List<SnakePlayerScript> _playerScripts;
     private Stage snakeStage;
+
     public override void Init(GameObject[] players, Stage stage)
     {
         base.Init(players, stage);
         _playerScripts = AddScriptToPlayers<SnakePlayerScript>();
-        snakeStage = Instantiate(Resources.Load<GameObject>("Prefabs/Stages/TDGameBorders").GetComponent<Stage>());
+        snakeStage = Instantiate(Resources.Load<GameObject>("Prefabs/Stages/Challenge/TDGameBorders").GetComponent<Stage>());
         _setStage(snakeStage);
         Debug.Log("Starting Snake");
     }

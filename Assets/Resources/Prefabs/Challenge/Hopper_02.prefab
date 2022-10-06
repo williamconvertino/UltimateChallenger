@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6439614981825487659}
   - component: {fileID: -2937845391799452433}
   m_Layer: 0
-  m_Name: Hopper
+  m_Name: Hopper_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cbc70a91834408bad0938046ab49fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stagePrefab: {fileID: 8472083532706671698, guid: f65316b553e7eca419f04078747e36a7, type: 3}
