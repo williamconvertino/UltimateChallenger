@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Player;
 using TMPro;
+using System;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -118,7 +119,12 @@ public class MainMenuManager : MonoBehaviour
     public void MoveCameraNext()
     {
         Vector3 previous = mainCamera.transform.position;
-        mainCamera.transform.position = new Vector3(previous.x + 20, previous.y, previous.z);
+        mainCamera.transform.position = new Vector3(previous.x + 18, previous.y, previous.z);
     }
 
+    internal void MoveCameraPrevious()
+    {
+        Vector3 previous = mainCamera.transform.position;
+        mainCamera.transform.position = new Vector3(previous.x - 18, previous.y, previous.z);
+    }
 }
