@@ -83,9 +83,14 @@ public class PointScoringSystem : ScoringSystem
             if (_playerScore[player] == _highestScore)
             {
                 playersInTheLead.Add(player.GetComponent<PlayerInfo>().playerName);
+                
             }
         }
         TextManager.instance.setBottomGameStatus("In the lead: " + String.Join(", ", playersInTheLead));
+        GlobalSettingsSingleton.Instance.WinnerName = String.Join(", ", playersInTheLead);
+        GlobalSettingsSingleton.Instance.NumWinners = playersInTheLead.Count;
+
+
     }
 
     public void UpdateScores()

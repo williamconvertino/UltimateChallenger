@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerScoreSpawn : MonoBehaviour

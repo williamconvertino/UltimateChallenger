@@ -24,8 +24,8 @@ public class DartHuntChallenge : Challenge
                 return true;
             });
         }
-        TextManager.instance.showTimedScreenTitle("Starting Dart Hunt", 5);
-        TextManager.instance.setBottomGameTitle("Playing: Dart Hunt");
+        TextManager.instance.showTimedScreenTitle("Dart Hunt: Be the last one standing", 5);
+        TextManager.instance.setBottomGameTitle("Dart Hunt");
         Debug.Log("Starting Dart Hunt");
     }
     #endregion

@@ -12,11 +12,12 @@ public class GlobalSettingsSingleton : MonoBehaviour
     public GameObject StagePrefab;
     public float GameTime;
     public float TimeBetweenRounds;
+    public string WinnerName;
+    public int NumWinners;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

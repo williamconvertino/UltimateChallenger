@@ -22,8 +22,8 @@ public class RPSChallenge : TimedChallenge
         }
         
         PopulateTeams();
-        TextManager.instance.showTimedScreenTitle("Starting RPS", 5);
-        TextManager.instance.setBottomGameTitle("Playing: RPS");
+        TextManager.instance.showTimedScreenTitle("Rock, Paper, Scissors", 5);
+        TextManager.instance.setBottomGameTitle("Rock, Paper, Scissors");
         Debug.Log("Starting RPS");
     }
 

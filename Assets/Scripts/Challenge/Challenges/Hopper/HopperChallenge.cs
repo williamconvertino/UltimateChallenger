@@ -39,6 +39,10 @@ public class HopperChallenge : Challenge
 
         _currentSet = _setBase;
         _setTimer = _setTime;
+
+        TextManager.instance.showTimedScreenTitle("Hopper: Don't fall", 5);
+        TextManager.instance.setBottomGameTitle("Hopper");
+        Debug.Log("Starting Dart Hunt");
     }
 
     private int numSets = 0;

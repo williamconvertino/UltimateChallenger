@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
           InitializeScoringSystem();
           StartCoroutine(LoadNewChallenge());
           _initialized = true;
-          TextManager.instance.showTimedScreenTitle("Welcome to the game", 3);
+          TextManager.instance.showTimedScreenTitle("Welcome to Ultimate Challenger", 3);
         TextManager.instance.clearScreenSubtext();
     }
 
@@ -211,11 +212,13 @@ public class GameManager : MonoBehaviour
           if (_isGameOver)
           {
             return;
+            
           }
           _isGameOver = true;
-        
+          //UIManager.instance.gameStatus(_isGameOver);
+          SceneManager.LoadScene("Ending");
 
-          Debug.Log("------------\n Scores:\n------------");
+        Debug.Log("------------\n Scores:\n------------");
           _scoringSystem.PrintScores();
 
      }
