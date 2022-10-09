@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
           {
                timeWaited += 1;
                yield return new WaitForSeconds(1);
-               TextManager.instance.setScreenTitle(((int)_gameSettings.TimeBetweenRounds - timeWaited).ToString());
+               TextManager.instance.setScreenTitle("New game in: " + ((int)_gameSettings.TimeBetweenRounds - timeWaited).ToString());
            
           }
           if (!_isGameOver)
@@ -180,9 +180,12 @@ public class GameManager : MonoBehaviour
 
           GameObject[] winners = currentChallengeScript.GetWinners();
           GameObject[] losers = currentChallengeScript.GetLosers();
-          _scoringSystem.UpdateWinners(winners);
+
+
+    _scoringSystem.UpdateWinners(winners);
           _scoringSystem.UpdateLosers(losers);
-          _scoringSystem.PrintScores();
+        //TextManager.instance.showTimedScreenSubtext("Winner(s) " + String.Join(", ", String.Join(", ", winners)), 2);
+        _scoringSystem.PrintScores();
           CheckGameState();
           UnloadCurrentChallenge();
           if (!_isGameOver)
