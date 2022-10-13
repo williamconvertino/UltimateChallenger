@@ -135,6 +135,7 @@ public class HopperChallenge : Challenge
 
     public override void Cleanup()
     {
+        _hopperStage.gameObject.SetActive(false);
         base.Cleanup();
         _resetStage();
         foreach (GameObject set in _sets)
