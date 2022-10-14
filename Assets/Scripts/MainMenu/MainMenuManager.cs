@@ -21,7 +21,8 @@ public class MainMenuManager : MonoBehaviour
     private int TimeBetweenRoundsIndex = 3;
     public TMP_Text TimeBetweenRoundsValueLabel;
 
-    public Sprite PlayerOneSprite;
+    public GameObject PlayerOneSprite;
+    public GameObject PlayerTwoSprite;
 
     private void Awake()
     {
@@ -118,6 +119,8 @@ public class MainMenuManager : MonoBehaviour
     public void ShiftPlayerSprite(int playerID, int shift)
     {
         GlobalSettingsSingleton.Instance.ShiftPlayerSprite(playerID, shift);
+        PlayerOneSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[0].spriteColor;
+        PlayerTwoSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
 
     }
 }
