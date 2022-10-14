@@ -733,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694949715407191772, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
       propertyPath: m_Name
-      value: LeftPlayerRightToggle
+      value: PlayerOneRightToggle
       objectReference: {fileID: 0}
     - target: {fileID: 5478408838603140292, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
       propertyPath: m_text
@@ -1176,7 +1176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694949715407191772, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
       propertyPath: m_Name
-      value: RightPlayerRightToggle
+      value: PlayerTwoRightToggle
       objectReference: {fileID: 0}
     - target: {fileID: 5478408838603140292, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
       propertyPath: m_text
@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694949715407191772, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
       propertyPath: m_Name
-      value: RightPlayerLeftToggle
+      value: PlayerTwoLeftToggle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
@@ -2286,7 +2286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694949715407191772, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
       propertyPath: m_Name
-      value: LeftPlayerLeftToggle
+      value: PlayerOneLeftToggle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
