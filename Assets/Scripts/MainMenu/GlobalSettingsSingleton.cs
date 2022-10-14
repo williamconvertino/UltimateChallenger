@@ -23,6 +23,21 @@ public class GlobalSettingsSingleton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerData testPlayerData = new PlayerData();
+        testPlayerData.playerName = "Player1";
+        testPlayerData.playerID = 0;
+        testPlayerData.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopLeftPlayerInput");
+        testPlayerData.headSprite = null;
+        testPlayerData.spriteColor = Color.red;
+
+        PlayerData testPlayer2Data = new PlayerData();
+        testPlayer2Data.playerName = "Player2";
+        testPlayer2Data.playerID = 1;
+        testPlayer2Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopRightPlayerInput");
+        testPlayer2Data.headSprite = null;
+        testPlayer2Data.spriteColor = Color.blue;
+
+        GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data };
     }
 
     // Update is called once per frame

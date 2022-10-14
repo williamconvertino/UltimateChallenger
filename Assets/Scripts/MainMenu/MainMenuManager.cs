@@ -40,20 +40,6 @@ public class MainMenuManager : MonoBehaviour
         UpdateTimeDisplay();
         UpdateTimeBetweenRoundsDisplay();
 
-        PlayerData testPlayerData = new PlayerData();
-        testPlayerData.playerName = "Player1";
-        testPlayerData.playerID = 0;
-        testPlayerData.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopLeftPlayerInput");
-        testPlayerData.headSprite = null;
-        testPlayerData.spriteColor = Color.red;
-
-        PlayerData testPlayer2Data = new PlayerData();
-        testPlayer2Data.playerName = "Player2";
-        testPlayer2Data.playerID = 1;
-        testPlayer2Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopRightPlayerInput");
-        testPlayer2Data.headSprite = null;
-        testPlayer2Data.spriteColor = Color.blue;
-
         GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
         GameObject crownChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Crown");
         GameObject dartChallenge = Resources.Load<GameObject>("Prefabs/Challenge/DartHunt");
@@ -63,7 +49,6 @@ public class MainMenuManager : MonoBehaviour
         GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
         GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>("Prefabs/Stages/CrazyCastle");
         GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
-        GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data };
 
         //TODO need options to change stage, maybe challenges
     }
@@ -126,5 +111,10 @@ public class MainMenuManager : MonoBehaviour
     {
         Vector3 previous = mainCamera.transform.position;
         mainCamera.transform.position = new Vector3(previous.x - 18, previous.y, previous.z);
+    }
+
+    public void ShiftPlayerSprite()
+    {
+
     }
 }
