@@ -17,8 +17,6 @@ public class GlobalSettingsSingleton : MonoBehaviour
     public int NumWinners;
 
     private Color[] PossibleColors = new Color[] { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow, Color.magenta };
-    private int PlayerOneColorIndex = 0;
-    private int PlayerTwoColorIndex = 1;
 
     // Start is called before the first frame update
     void Start()

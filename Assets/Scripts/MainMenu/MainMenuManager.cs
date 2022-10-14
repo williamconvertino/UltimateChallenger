@@ -21,6 +21,8 @@ public class MainMenuManager : MonoBehaviour
     private int TimeBetweenRoundsIndex = 3;
     public TMP_Text TimeBetweenRoundsValueLabel;
 
+    public Sprite PlayerOneSprite;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -113,8 +115,9 @@ public class MainMenuManager : MonoBehaviour
         mainCamera.transform.position = new Vector3(previous.x - 18, previous.y, previous.z);
     }
 
-    public void ShiftPlayerSprite()
+    public void ShiftPlayerSprite(int playerID, int shift)
     {
+        GlobalSettingsSingleton.Instance.ShiftPlayerSprite(playerID, shift);
 
     }
 }
