@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
        
         _velocity.x = _input.DirX * speedScale;
 
+        //sticky direction for the dart script 
         if (_input.DirX > 0)
         {
             _directionX = 1;
@@ -75,12 +76,8 @@ public class PlayerMovement : MonoBehaviour
         CheckGrounding();
         UpdateJump();
         
-
         _rb2d.velocity = new Vector2(_velocity.x, _velocity.y);
     }
-
-  
-
     #endregion
 
     #region Animation
@@ -88,7 +85,8 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] idleFrames;
     public Sprite[] jumpFrames;
     public Sprite[] leftFrames;
-    public Sprite[] rightFrames; 
+    public Sprite[] rightFrames;
+    public Sprite[] fallFrames; 
     private List<Sprite[]> allSprites;
 
     public int currentAnimation;
@@ -103,37 +101,54 @@ public class PlayerMovement : MonoBehaviour
         allSprites.Add(leftFrames);
         allSprites.Add(rightFrames);
         allSprites.Add(jumpFrames);
+        allSprites.Add(fallFrames); 
     }
 
     private void UpdateSpriteAnimation()
     {
+        //need to fix the flip animation stuff, need to consider jumping in certain directions
+        //flip the animation if there aren't distinct left right frames
+        if (currentAnimation == 1)
+        {
+            _spriteRenderer.flipX = true;
+        }
+        else
+        {
+            _spriteRenderer.flipX = false;
+        }
+
+        //determining the right animation 
+
+        //if the cat is going up (at all)
+        if (_rb2d.velocity.y > 0)
+        {
+            currentAnimation = 3;
+        }
+        // if the cat is going down (at all?) 
+        else if (_rb2d.velocity.y < 0)
+        {
+            currentAnimation = 4;
+        }
+
         //have it go through the right animations 
-        if (_input.DirX < 0)
+        else if (_input.DirX < 0)
         {
             currentAnimation = 1; 
         }
 
         //have it go through the left animations
-        //and input is not being pressed
         else if (_input.DirX > 0)
         {
             currentAnimation = 2; 
         }
 
-        //have it cycle through the jump animations 
-        else if (_velocity.y == jumpScale)
-        {
-            currentAnimation = 3; 
-        }
-
-        //else cycle through the idle animations
-        //if the currentMovement is nothing happening
-        else
+        //if no button is being pressed and we are being idle
+        else if (_input.DirX == 0)
         {
             currentAnimation = 0; 
         }
 
-        //timing mechanism 
+        //the issue is that if the animation doesn't complete, then it doesnt go back to the idle animation 
         frameTimer -= Time.deltaTime;
         if (frameTimer <= 0)
         {
@@ -145,11 +160,12 @@ public class PlayerMovement : MonoBehaviour
                 currentFrame = 0;
             }
         }
-
         //update with the currentSprite
         _spriteRenderer.sprite = allSprites[currentAnimation][currentFrame];
 
+
     }
+
     #endregion 
 
     #region Gravity
