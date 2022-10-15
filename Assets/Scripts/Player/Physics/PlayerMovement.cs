@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Windows;
 
 //This design was heavily inspired by TaroDev, though redone for my own uses.
 //https://github.com/Matthew-J-Spencer/Ultimate-2D-Controller
@@ -19,20 +20,30 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb2d;
     private BoxCollider2D _boxCollider;
     private PlayerMovementInput _playerMovementInput;
+    private SpriteRenderer _spriteRenderer;
+
     private void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _playerMovementInput = GetComponentInChildren<PlayerMovementInput>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        InitializeAnimation();
+
     }
 
     private void Update()
     {
+        
         GetInput();
         Move();
+        UpdateSpriteAnimation();
     }
-    
     #endregion
+
+
+
 
     #region Movement
     [Header("Movement")]
@@ -48,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     //Moves the player according to physics and their input.
     private void Move()
     {
+       
         _velocity.x = _input.DirX * speedScale;
 
         if (_input.DirX > 0)
@@ -62,11 +74,83 @@ public class PlayerMovement : MonoBehaviour
         UpdateGravity();
         CheckGrounding();
         UpdateJump();
+        
 
         _rb2d.velocity = new Vector2(_velocity.x, _velocity.y);
     }
-    
+
+  
+
     #endregion
+
+    #region Animation
+
+    public Sprite[] idleFrames;
+    public Sprite[] jumpFrames;
+    public Sprite[] leftFrames;
+    public Sprite[] rightFrames; 
+    private List<Sprite[]> allSprites;
+
+    public int currentAnimation;
+    public int currentFrame;
+    public float framesPerSecond = 10;
+    private float frameTimer;
+
+    private void InitializeAnimation()
+    {
+        allSprites = new List<Sprite[]>();
+        allSprites.Add(idleFrames);
+        allSprites.Add(leftFrames);
+        allSprites.Add(rightFrames);
+        allSprites.Add(jumpFrames);
+    }
+
+    private void UpdateSpriteAnimation()
+    {
+        //have it go through the right animations 
+        if (_input.DirX < 0)
+        {
+            currentAnimation = 1; 
+        }
+
+        //have it go through the left animations
+        //and input is not being pressed
+        else if (_input.DirX > 0)
+        {
+            currentAnimation = 2; 
+        }
+
+        //have it cycle through the jump animations 
+        else if (_velocity.y == jumpScale)
+        {
+            currentAnimation = 3; 
+        }
+
+        //else cycle through the idle animations
+        //if the currentMovement is nothing happening
+        else
+        {
+            currentAnimation = 0; 
+        }
+
+        //timing mechanism 
+        frameTimer -= Time.deltaTime;
+        if (frameTimer <= 0)
+        {
+            _spriteRenderer.sprite = allSprites[currentAnimation][currentFrame];
+            frameTimer = 1 / framesPerSecond;
+            currentFrame++;
+            if (currentFrame >= allSprites[currentAnimation].Length)
+            {
+                currentFrame = 0;
+            }
+        }
+
+        //update with the currentSprite
+        _spriteRenderer.sprite = allSprites[currentAnimation][currentFrame];
+
+    }
+    #endregion 
 
     #region Gravity
     [Header("Gravity")]
