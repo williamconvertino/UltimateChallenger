@@ -2,19 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Collections;
+using System.Linq;
+using System.Security.Claims;
+
+using UnityEngine.Serialization;
+using UnityEngine.Windows;
+
 public class RPSPlayerScript : ChallengePlayerScript
 {
     public bool PlayerHit { private set; get; } = false;
     public float NumHits { private set; get; } = 0;
 
+    public Sprite[] allSprites;
+    public RPSSpriteComponent sprites; 
+
     private SpriteRenderer _spriteRenderer;
     private Color _originalColor;
     private Color _teamColor;
+
     public override void Init()
     {
         base.Init();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
+        sprites = GetComponent<RPSSpriteComponent>();
+        allSprites = sprites.getSprites(); 
+    
     }
 
     public RPSChallenge.RPSTeam Team { private set; get; }
@@ -23,6 +37,7 @@ public class RPSPlayerScript : ChallengePlayerScript
     {
         Team = team;
         _originalColor = _spriteRenderer.color;
+
         if (team == RPSChallenge.RPSTeam.Rock)
         {
             _spriteRenderer.color = _teamColor = Color.black;
@@ -33,7 +48,7 @@ public class RPSPlayerScript : ChallengePlayerScript
         }
         if (team == RPSChallenge.RPSTeam.Scissors)
         {
-            _spriteRenderer.color =_teamColor = Color.gray;
+            _spriteRenderer.color = _teamColor = Color.gray;
         }
     }
 
@@ -45,6 +60,24 @@ public class RPSPlayerScript : ChallengePlayerScript
 
     private void Update()
     {
+        //if it's rock, do the first Sprite
+        if (_spriteRenderer.color == Color.black)
+        {
+            _spriteRenderer.sprite = allSprites[0];
+
+        }
+        //if it's paper, do second Sprite; 
+        else if (_spriteRenderer.color == Color.white)
+        {
+            _spriteRenderer.sprite = allSprites[1];
+        }
+        //if it's scissors, do the third, and scissor sprite 
+        else if (_spriteRenderer.color == Color.gray)
+        {
+            _spriteRenderer.sprite = allSprites[2];
+        }
+
+
         if (_invincibilityTimer > 0)
         {
             _invincibilityTimer -= Time.deltaTime;
