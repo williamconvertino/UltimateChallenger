@@ -158,13 +158,14 @@ public class GameManager : MonoBehaviour
 
      private void SetStage(Stage stage)
      {
-          _defaultStage.gameObject.SetActive(false);
+          _defaultStage.TurnOffPlatforms();
           _respawnManager.SetStage(stage);
      }
      
      private void ResetStage()
      {
-          _defaultStage.gameObject.SetActive(true);
+          _defaultStage.TurnOnPlatforms();
+          print(_defaultStage.isActiveAndEnabled);
           _respawnManager.SetStage(_defaultStage);
      }
 

@@ -26,6 +26,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject PlayerOneSprite;
     public GameObject PlayerTwoSprite;
 
+    public TMP_Text SelectedStageName;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -52,12 +54,11 @@ public class MainMenuManager : MonoBehaviour
         GameObject hopperChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Hopper_02");
 
         GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
-        GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>("Prefabs/Stages/CrazyCastle");
         GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
 
         ShiftPlayerSprite(0, 0);
         ShiftPlayerSprite(1, 0);
-        //TODO need options to change stage, maybe challenges
+        ShiftSelectedStage(0);
     }
 
     public void IncrementTime()
@@ -127,5 +128,11 @@ public class MainMenuManager : MonoBehaviour
         PlayerTwoSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
         PlayerOneSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[0].spriteColor;
         PlayerTwoSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
+    }
+
+    public void ShiftSelectedStage(int shift)
+    {
+        GlobalSettingsSingleton.Instance.ShiftStage(shift);
+        SelectedStageName.text = GlobalSettingsSingleton.Instance.StageName;
     }
 }

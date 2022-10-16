@@ -15,9 +15,14 @@ public class GlobalSettingsSingleton : MonoBehaviour
     public float TimeBetweenRounds;
     public string WinnerName;
     public int NumWinners;
+    public string StageName;
 
     private Color[] PossibleColors;
     private Dictionary<int, int> PlayerIDToColorIndex;
+
+    private string[] PossibleStages;
+    private string[] PossibleStageNames;
+    private int SelectedStageIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +53,13 @@ public class GlobalSettingsSingleton : MonoBehaviour
             PlayerIDToColorIndex.Add(0, 0);
             PlayerIDToColorIndex.Add(1, 1);
             PlayerIDToColorIndex.Add(2, 2);
+
+            PossibleStages = new string[] { "Battlefield", "CrazyCastle" };
+            PossibleStageNames = new string[] { "Battlefield", "Crazy Castle" };
+            SelectedStageIndex = 0;
+            StageName = PossibleStageNames[SelectedStageIndex];
+
+            GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
 
             PlayerData testPlayerData = new PlayerData();
             testPlayerData.playerName = "Player1";
@@ -86,5 +98,17 @@ public class GlobalSettingsSingleton : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void ShiftStage(int shift)
+    {
+        SelectedStageIndex = SelectedStageIndex + shift;
+        if (SelectedStageIndex < 0)
+        {
+            SelectedStageIndex = PossibleStages.Length - 1;
+        }
+        SelectedStageIndex = SelectedStageIndex % PossibleStages.Length;
+        GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
+        StageName = PossibleStageNames[SelectedStageIndex];
     }
 }
