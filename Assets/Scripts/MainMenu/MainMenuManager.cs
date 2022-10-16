@@ -34,6 +34,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject RemovePlayerThreeButton;
     public GameObject AddPlayerThreeButton;
 
+    private Vector3 CameraDestination;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -50,9 +52,15 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CameraDestination = mainCamera.transform.position;
         UpdateTimeDisplay();
         UpdateTimeBetweenRoundsDisplay();
         ResetStageAndPlayers();
+    }
+
+    private void Update()
+    {
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, CameraDestination, 0.05f);
     }
 
     public void IncrementTime()
@@ -106,13 +114,13 @@ public class MainMenuManager : MonoBehaviour
     public void MoveCameraNext()
     {
         Vector3 previous = mainCamera.transform.position;
-        mainCamera.transform.position = new Vector3(previous.x + 18, previous.y, previous.z);
+        CameraDestination = new Vector3(previous.x + 18, previous.y, previous.z);
     }
 
     internal void MoveCameraPrevious()
     {
         Vector3 previous = mainCamera.transform.position;
-        mainCamera.transform.position = new Vector3(previous.x - 18, previous.y, previous.z);
+        CameraDestination = new Vector3(previous.x - 18, previous.y, previous.z);
     }
 
     public void ShiftPlayerSprite(int playerID, int shift)
