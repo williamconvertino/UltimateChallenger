@@ -10,6 +10,30 @@ public class Stage : MonoBehaviour
     [SerializeField] private Vector2 offset;
     public Bounds Bounds => new Bounds(transform.position + new Vector3(offset.x, offset.y), size);
     public Vector2 Center => transform.position;
+
+    private Platform[] _platforms;
+
+    private void Start()
+    {
+        _platforms = GetComponentsInChildren<Platform>();
+    }
+
+    public void TurnOffPlatforms()
+    {
+        foreach (Platform platform in _platforms)
+        {
+            platform.gameObject.SetActive(false);
+        }
+    }
+
+    
+    public void TurnOnPlatforms()
+    {
+        foreach (Platform platform in _platforms)
+        {
+            platform.gameObject.SetActive(true);
+        }
+    }
     
     private void OnDrawGizmos()
     {
