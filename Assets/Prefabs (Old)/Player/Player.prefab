@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1640516891, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  m_Sprite: {fileID: 737981802, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,6 +112,21 @@ MonoBehaviour:
     m_Bits: 128
   speedScale: 6
   jumpScale: 25
+  idleFrames:
+  - {fileID: -2136688742, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
+  - {fileID: 737981802, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
+  upFrames:
+  - {fileID: -1238151795, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
+  - {fileID: 103564592, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
+  runFrames:
+  - {fileID: 1761973113, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
+  - {fileID: -1005189351, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
+  fallFrames:
+  - {fileID: -544942388, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
+  - {fileID: 1149434950, guid: 6bed4005a3cc8423ea5cdd0a47d56608, type: 3}
+  currentAnimation: 0
+  currentFrame: 0
+  framesPerSecond: 10
   minGravity: 80
   maxGravity: 120
   maxFallSpeed: 20
@@ -136,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 1}
+    oldSize: {x: 0.86853516, y: 0.898}
     newSize: {x: 0.875, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -305,6 +320,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   speedScale: 6
+  OverrideVelocity: {x: 0, y: 0}
+  UseOverrideVelocity: 0
 --- !u!1 &3675085099310339450
 GameObject:
   m_ObjectHideFlags: 0

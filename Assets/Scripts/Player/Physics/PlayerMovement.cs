@@ -83,9 +83,8 @@ public class PlayerMovement : MonoBehaviour
     #region Animation
 
     public Sprite[] idleFrames;
-    public Sprite[] jumpFrames;
-    public Sprite[] leftFrames;
-    public Sprite[] rightFrames;
+    public Sprite[] upFrames;
+    public Sprite[] runFrames; 
     public Sprite[] fallFrames; 
     private List<Sprite[]> allSprites;
 
@@ -98,17 +97,16 @@ public class PlayerMovement : MonoBehaviour
     {
         allSprites = new List<Sprite[]>();
         allSprites.Add(idleFrames);
-        allSprites.Add(leftFrames);
-        allSprites.Add(rightFrames);
-        allSprites.Add(jumpFrames);
+        allSprites.Add(runFrames); 
+        allSprites.Add(upFrames);
         allSprites.Add(fallFrames); 
     }
 
     private void UpdateSpriteAnimation()
     {
-        //need to fix the flip animation stuff, need to consider jumping in certain directions
-        //flip the animation if there aren't distinct left right frames
-        if (currentAnimation == 1)
+        //flip the animatino if it is going left in any way
+        //this isn't right right now because it right now defaults to the long run and jump frames 
+        if (_input.DirX < 0)
         {
             _spriteRenderer.flipX = true;
         }
@@ -117,37 +115,58 @@ public class PlayerMovement : MonoBehaviour
             _spriteRenderer.flipX = false;
         }
 
-        //determining the right animation 
+        //if the character is in the air
+        if (!_isGrounded)
+        {
+            if (_input.DirX < 0)
+            {
+                _spriteRenderer.flipX = true;
+            }
+            else
+            {
+                _spriteRenderer.flipX = false;
+            }
 
-        //if the cat is going up (at all)
-        if (_rb2d.velocity.y > 0)
-        {
-            currentAnimation = 3;
-        }
-        // if the cat is going down (at all?) 
-        else if (_rb2d.velocity.y < 0)
-        {
-            currentAnimation = 4;
-        }
+            //if the cat is going up
+            if (_rb2d.velocity.y > 0)
+            {
+                currentAnimation = 2;
+            }
+            //if the cat is going down 
+            else if (_rb2d.velocity.y < 0)
+            {
+                currentAnimation = 3;
+            }
 
-        //have it go through the right animations 
-        else if (_input.DirX < 0)
-        {
-            currentAnimation = 1; 
-        }
-
-        //have it go through the left animations
-        else if (_input.DirX > 0)
-        {
-            currentAnimation = 2; 
-        }
-
-        //if no button is being pressed and we are being idle
-        else if (_input.DirX == 0)
-        {
-            currentAnimation = 0; 
         }
 
+        //if the character is on the ground 
+        else
+        {
+            //running animations 
+            if(_input.DirX != 0)
+            {
+                currentAnimation = 1;
+
+                //if it's going left, flip the animation 
+                if(_input.DirX < 0)
+                {
+                    _spriteRenderer.flipX = true;
+                }
+                else
+                {
+                    _spriteRenderer.flipX = false;
+                }
+            }
+
+            //idle animations 
+            else
+            {
+                currentAnimation = 0; 
+            }
+
+        }
+      
         //the issue is that if the animation doesn't complete, then it doesnt go back to the idle animation 
         frameTimer -= Time.deltaTime;
         if (frameTimer <= 0)
