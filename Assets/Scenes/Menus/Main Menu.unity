@@ -986,6 +986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
+--- !u!1 &703594130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2897713024843735645, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
+  m_PrefabInstance: {fileID: 703594129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &720995110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,8 +1325,10 @@ MonoBehaviour:
   mainCamera: {fileID: 720995112}
   TotalTimeValueLabel: {fileID: 1514061197}
   TimeBetweenRoundsValueLabel: {fileID: 1642679779}
-  PlayerOneSprite: {fileID: 614329326}
-  PlayerTwoSprite: {fileID: 1401483848}
+  PlayerOneSpriteSelector: {fileID: 614329326}
+  PlayerTwoSpriteSelector: {fileID: 1401483848}
+  PlayerOneSprite: {fileID: 703594130}
+  PlayerTwoSprite: {fileID: 2133891858}
 --- !u!4 &1099684357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2572851297458608412, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
@@ -2459,6 +2466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
+--- !u!1 &2133891858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2187827181635767487, guid: 7eb9e7a5e05c0dd498accfdddb2bc20f, type: 3}
+  m_PrefabInstance: {fileID: 2133891857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &559954473743819448
 PrefabInstance:
   m_ObjectHideFlags: 0
