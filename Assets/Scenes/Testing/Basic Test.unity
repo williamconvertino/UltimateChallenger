@@ -983,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: runFrames.Array.size
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: fallFrames.Array.size
@@ -1016,19 +1016,19 @@ PrefabInstance:
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: runFrames.Array.data[0]
       value: 
-      objectReference: {fileID: 1761973113, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
+      objectReference: {fileID: -1005189351, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: runFrames.Array.data[1]
       value: 
-      objectReference: {fileID: -1005189351, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
+      objectReference: {fileID: -1527100510, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: runFrames.Array.data[2]
       value: 
-      objectReference: {fileID: -1527100510, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
+      objectReference: {fileID: 248101802, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: runFrames.Array.data[3]
       value: 
-      objectReference: {fileID: 248101802, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
+      objectReference: {fileID: -988044544, guid: d74b91aa5968841af8c3e36cc06a5d98, type: 3}
     - target: {fileID: 1439825735511458212, guid: 40abdcaec9feb2245ace8820fd721947, type: 3}
       propertyPath: runFrames.Array.data[4]
       value: 

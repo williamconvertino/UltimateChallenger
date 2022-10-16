@@ -112,6 +112,21 @@ MonoBehaviour:
     m_Bits: 128
   speedScale: 6
   jumpScale: 25
+  idleFrames:
+  - {fileID: 1640516891, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  - {fileID: 615450950, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  upFrames:
+  - {fileID: 1640516891, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  runFrames:
+  - {fileID: 1525769753, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  - {fileID: -547497591, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  - {fileID: 1851541307, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  - {fileID: -1721426524, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  fallFrames:
+  - {fileID: 615450950, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+  currentAnimation: 0
+  currentFrame: 0
+  framesPerSecond: 10
   minGravity: 80
   maxGravity: 120
   maxFallSpeed: 20
@@ -305,6 +320,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   speedScale: 6
+  OverrideVelocity: {x: 0, y: 0}
+  UseOverrideVelocity: 0
 --- !u!1 &3675085099310339450
 GameObject:
   m_ObjectHideFlags: 0

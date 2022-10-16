@@ -946,6 +946,10 @@ PrefabInstance:
       value: RightPlayerSelectSprite
       objectReference: {fileID: 0}
     - target: {fileID: 8103527429491376041, guid: 36a4e4b102cff42659125b4636dfa5f2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1640516891, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
+    - target: {fileID: 8103527429491376041, guid: 36a4e4b102cff42659125b4636dfa5f2, type: 3}
       propertyPath: m_Color.b
       value: 0.7921569
       objectReference: {fileID: 0}
@@ -2283,6 +2287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftPlayerSelectSprite
       objectReference: {fileID: 0}
+    - target: {fileID: 8103527429491376041, guid: 36a4e4b102cff42659125b4636dfa5f2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1640516891, guid: 2850daf7bef2cfb4fb72514a0dcefef2, type: 3}
     - target: {fileID: 8103527429491376041, guid: 36a4e4b102cff42659125b4636dfa5f2, type: 3}
       propertyPath: m_Color.b
       value: 0.30588236
