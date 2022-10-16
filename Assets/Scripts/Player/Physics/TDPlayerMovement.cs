@@ -16,15 +16,20 @@ public class TDPlayerMovement : MonoBehaviour
     private Rigidbody2D _rb2d;
     private BoxCollider2D _boxCollider;
     private PlayerMovementInput _playerMovementInput;
+    private SpriteRenderer _spriteRenderer;
+    public Sprite head; 
+
     private void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _playerMovementInput = GetComponent<PlayerMovementInput>();
+        _spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     private void Update()
     {
+        _spriteRenderer.sprite = head; 
         GetInput();
         Move();
     }

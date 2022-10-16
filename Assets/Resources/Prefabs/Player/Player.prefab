@@ -293,6 +293,7 @@ MonoBehaviour:
   solidLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  head: {fileID: 21300000, guid: 893b619608d7f43eb86c4db7061dfd9a, type: 3}
   speedScale: 6
   OverrideVelocity: {x: 0, y: 0}
   UseOverrideVelocity: 0
