@@ -58,8 +58,8 @@ public class GlobalSettingsSingleton : MonoBehaviour
             PlayerIDToColorIndex.Add(1, 1);
             PlayerIDToColorIndex.Add(2, 2);
 
-            PossibleStages = new string[] { "Battlefield", "CrazyCastle" };
-            PossibleStageNames = new string[] { "Battlefield", "Crazy Castle" };
+            PossibleStages = new string[] { "Battlefield", "CrazyCastle", "CrazierCastle" };
+            PossibleStageNames = new string[] { "Battlefield", "Crazy Castle", "Crazier Castle" };
             SelectedStageIndex = 0;
             StageName = PossibleStageNames[SelectedStageIndex];
 
