@@ -26,6 +26,8 @@ public class GlobalSettingsSingleton : MonoBehaviour
 
     private int NumPlayers;
 
+    private GameObject RPSChallenge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +63,7 @@ public class GlobalSettingsSingleton : MonoBehaviour
             SelectedStageIndex = 0;
             StageName = PossibleStageNames[SelectedStageIndex];
 
-            GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
+            StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
 
             PlayerData testPlayerData = new PlayerData();
             testPlayerData.playerName = "Player1";
@@ -84,16 +86,19 @@ public class GlobalSettingsSingleton : MonoBehaviour
             testPlayer3Data.headSprite = null;
             testPlayer3Data.spriteColor = PossibleColors[PlayerIDToColorIndex[2]];
 
-            GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data, testPlayer3Data };
+            NumPlayers = 3;
+
+            PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data, testPlayer3Data };
 
             GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
             GameObject crownChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Crown");
             GameObject dartChallenge = Resources.Load<GameObject>("Prefabs/Challenge/DartHunt");
             GameObject snakeChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Snake");
             GameObject hopperChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Hopper_02");
+            RPSChallenge = Resources.Load<GameObject>("Prefabs/Challenge/RPS");
 
-            GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
-            GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
+            ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
+            ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge, RPSChallenge };
 
         }
     }
@@ -127,7 +132,37 @@ public class GlobalSettingsSingleton : MonoBehaviour
             SelectedStageIndex = PossibleStages.Length - 1;
         }
         SelectedStageIndex = SelectedStageIndex % PossibleStages.Length;
-        GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
+        StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
         StageName = PossibleStageNames[SelectedStageIndex];
+    }
+
+    public void AddPlayerThree()
+    {
+        if (NumPlayers == 3)
+        {
+            return;
+        }
+
+        NumPlayers = 3;
+        PlayerData testPlayer3Data = new PlayerData();
+        testPlayer3Data.playerName = "Player3";
+        testPlayer3Data.playerID = 2;
+        testPlayer3Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopMiddlePlayerInput");
+        testPlayer3Data.headSprite = null;
+        testPlayer3Data.spriteColor = PossibleColors[PlayerIDToColorIndex[2]];
+        PlayerData.Add(testPlayer3Data);
+        ChallengePrefabs.Add(RPSChallenge);
+    }
+
+    public void RemovePlayerThree()
+    {
+        if (NumPlayers == 2)
+        {
+            return;
+        }
+
+        NumPlayers = 2;
+        PlayerData.RemoveAt(2);
+        ChallengePrefabs.Remove(RPSChallenge);
     }
 }
