@@ -16,26 +16,13 @@ public class GlobalSettingsSingleton : MonoBehaviour
     public string WinnerName;
     public int NumWinners;
 
-    private Color[] PossibleColors = new Color[] { Color.red, Color.blue, Color.cyan, Color.green, Color.yellow, Color.magenta };
+    private Color[] PossibleColors;
+    private Dictionary<int, int> PlayerIDToColorIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerData testPlayerData = new PlayerData();
-        testPlayerData.playerName = "Player1";
-        testPlayerData.playerID = 0;
-        testPlayerData.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopLeftPlayerInput");
-        testPlayerData.headSprite = null;
-        testPlayerData.spriteColor = Color.red;
-
-        PlayerData testPlayer2Data = new PlayerData();
-        testPlayer2Data.playerName = "Player2";
-        testPlayer2Data.playerID = 1;
-        testPlayer2Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopRightPlayerInput");
-        testPlayer2Data.headSprite = null;
-        testPlayer2Data.spriteColor = Color.blue;
-
-        GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data };
+        
     }
 
     // Update is called once per frame
@@ -55,6 +42,28 @@ public class GlobalSettingsSingleton : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            PossibleColors = new Color[] { Color.red, new Color(0.4291207f, 0.7256108f, 0.7924528f, 1f), Color.cyan, Color.green, Color.magenta, Color.grey };
+            PlayerIDToColorIndex = new Dictionary<int, int>();
+            PlayerIDToColorIndex.Add(0, 0);
+            PlayerIDToColorIndex.Add(1, 1);
+            PlayerIDToColorIndex.Add(2, 2);
+
+            PlayerData testPlayerData = new PlayerData();
+            testPlayerData.playerName = "Player1";
+            testPlayerData.playerID = 0;
+            testPlayerData.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopLeftPlayerInput");
+            testPlayerData.headSprite = null;
+            testPlayerData.spriteColor = PossibleColors[PlayerIDToColorIndex[0]];
+
+            PlayerData testPlayer2Data = new PlayerData();
+            testPlayer2Data.playerName = "Player2";
+            testPlayer2Data.playerID = 1;
+            testPlayer2Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopRightPlayerInput");
+            testPlayer2Data.headSprite = null;
+            testPlayer2Data.spriteColor = PossibleColors[PlayerIDToColorIndex[1]];
+
+            GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data };
         }
     }
 
@@ -64,8 +73,16 @@ public class GlobalSettingsSingleton : MonoBehaviour
         {
             if (player.playerID == playerID)
             {
-                int previousColorIndex = Array.IndexOf(PossibleColors, player.spriteColor);
-                player.spriteColor = PossibleColors[(previousColorIndex + shift) % PossibleColors.Length];
+                int previousColorIndex = PlayerIDToColorIndex[playerID];
+                if (previousColorIndex == 0 && shift == -1)
+                {
+                    player.spriteColor = PossibleColors[PossibleColors.Length - 1];
+                    PlayerIDToColorIndex[playerID] = PossibleColors.Length - 1;
+                } else
+                {
+                    player.spriteColor = PossibleColors[(previousColorIndex + shift) % PossibleColors.Length];
+                    PlayerIDToColorIndex[playerID] = previousColorIndex + shift % PossibleColors.Length;
+                }
                 return;
             }
         }

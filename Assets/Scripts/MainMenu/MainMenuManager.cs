@@ -21,6 +21,8 @@ public class MainMenuManager : MonoBehaviour
     private int TimeBetweenRoundsIndex = 3;
     public TMP_Text TimeBetweenRoundsValueLabel;
 
+    public GameObject PlayerOneSpriteSelector;
+    public GameObject PlayerTwoSpriteSelector;
     public GameObject PlayerOneSprite;
     public GameObject PlayerTwoSprite;
 
@@ -53,6 +55,8 @@ public class MainMenuManager : MonoBehaviour
         GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>("Prefabs/Stages/CrazyCastle");
         GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
 
+        ShiftPlayerSprite(0, 0);
+        ShiftPlayerSprite(1, 0);
         //TODO need options to change stage, maybe challenges
     }
 
@@ -121,6 +125,7 @@ public class MainMenuManager : MonoBehaviour
         GlobalSettingsSingleton.Instance.ShiftPlayerSprite(playerID, shift);
         PlayerOneSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[0].spriteColor;
         PlayerTwoSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
-
+        PlayerOneSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[0].spriteColor;
+        PlayerTwoSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
     }
 }
