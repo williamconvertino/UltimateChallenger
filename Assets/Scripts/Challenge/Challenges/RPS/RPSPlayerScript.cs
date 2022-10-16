@@ -40,7 +40,7 @@ public class RPSPlayerScript : ChallengePlayerScript
 
         if (team == RPSChallenge.RPSTeam.Rock)
         {
-            _spriteRenderer.color = _teamColor = Color.black;
+            _spriteRenderer.color = _teamColor = Color.white; 
         }
         if (team == RPSChallenge.RPSTeam.Paper)
         {
@@ -48,7 +48,7 @@ public class RPSPlayerScript : ChallengePlayerScript
         }
         if (team == RPSChallenge.RPSTeam.Scissors)
         {
-            _spriteRenderer.color = _teamColor = Color.gray;
+            _spriteRenderer.color = _teamColor = Color.white;
         }
     }
 
@@ -60,19 +60,21 @@ public class RPSPlayerScript : ChallengePlayerScript
 
     private void Update()
     {
+        //rather do it based on what it is 
         //if it's rock, do the first Sprite
-        if (_spriteRenderer.color == Color.black)
+      
+        if (Team == RPSChallenge.RPSTeam.Rock)
         {
             _spriteRenderer.sprite = allSprites[0];
 
         }
         //if it's paper, do second Sprite; 
-        else if (_spriteRenderer.color == Color.white)
+        else if (Team == RPSChallenge.RPSTeam.Paper)
         {
             _spriteRenderer.sprite = allSprites[1];
         }
         //if it's scissors, do the third, and scissor sprite 
-        else if (_spriteRenderer.color == Color.gray)
+        else if (Team == RPSChallenge.RPSTeam.Scissors)
         {
             _spriteRenderer.sprite = allSprites[2];
         }
