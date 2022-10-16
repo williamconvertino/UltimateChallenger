@@ -24,6 +24,8 @@ public class GlobalSettingsSingleton : MonoBehaviour
     private string[] PossibleStageNames;
     private int SelectedStageIndex;
 
+    private int NumPlayers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +50,7 @@ public class GlobalSettingsSingleton : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            PossibleColors = new Color[] { Color.red, new Color(0.4291207f, 0.7256108f, 0.7924528f, 1f), Color.cyan, Color.green, Color.magenta, Color.grey };
+            PossibleColors = new Color[] { new Color(0.4291207f, 0.7256108f, 0.7924528f, 1f), Color.red, Color.green, Color.cyan, Color.magenta, Color.grey };
             PlayerIDToColorIndex = new Dictionary<int, int>();
             PlayerIDToColorIndex.Add(0, 0);
             PlayerIDToColorIndex.Add(1, 1);
@@ -75,7 +77,24 @@ public class GlobalSettingsSingleton : MonoBehaviour
             testPlayer2Data.headSprite = null;
             testPlayer2Data.spriteColor = PossibleColors[PlayerIDToColorIndex[1]];
 
-            GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data };
+            PlayerData testPlayer3Data = new PlayerData();
+            testPlayer3Data.playerName = "Player3";
+            testPlayer3Data.playerID = 2;
+            testPlayer3Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopMiddlePlayerInput");
+            testPlayer3Data.headSprite = null;
+            testPlayer3Data.spriteColor = PossibleColors[PlayerIDToColorIndex[2]];
+
+            GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data, testPlayer3Data };
+
+            GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
+            GameObject crownChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Crown");
+            GameObject dartChallenge = Resources.Load<GameObject>("Prefabs/Challenge/DartHunt");
+            GameObject snakeChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Snake");
+            GameObject hopperChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Hopper_02");
+
+            GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
+            GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
+
         }
     }
 
