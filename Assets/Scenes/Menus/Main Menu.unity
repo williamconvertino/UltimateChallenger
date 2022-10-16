@@ -922,6 +922,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2926951680158070640, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
   m_PrefabInstance: {fileID: 615435752}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &615435754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3694949715407191772, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
+  m_PrefabInstance: {fileID: 615435752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &615435755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615435754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d97fb6e23fe4c459367d5b6e43ca83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuManager: {fileID: 1094697568}
 --- !u!1001 &698775782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1525,7 +1543,7 @@ GameObject:
   - component: {fileID: 1083288565}
   - component: {fileID: 1083288566}
   m_Layer: 0
-  m_Name: Square
+  m_Name: StageTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1650,6 +1668,7 @@ MonoBehaviour:
   PlayerTwoSpriteSelector: {fileID: 1401483848}
   PlayerOneSprite: {fileID: 703594130}
   PlayerTwoSprite: {fileID: 2133891858}
+  SelectedStageName: {fileID: 771007943}
 --- !u!4 &1099684357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2572851297458608412, guid: 74d6e554598a03245a2fdaf8a37a48ca, type: 3}
@@ -2277,6 +2296,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2926951680158070640, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
   m_PrefabInstance: {fileID: 1787880204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1787880206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3694949715407191772, guid: 51dbcb5cc74114928a13c8306fcc9c1d, type: 3}
+  m_PrefabInstance: {fileID: 1787880204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787880207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787880206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cc0618811f645aa8eab15ddba95f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuManager: {fileID: 1094697568}
 --- !u!224 &1810598371 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4473320225106154849, guid: eaa98eeb9d4c242adbff23d33a75d82e, type: 3}
