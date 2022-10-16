@@ -105,20 +105,20 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateSpriteAnimation()
     {
         //flip the animatino if it is going left in any way
-        //this isn't right right now because it right now defaults to the long run and jump frames 
-        if (_input.DirX < 0)
+       
+        //if character is on the ground
+        if(_directionX == -1)
         {
             _spriteRenderer.flipX = true;
         }
         else
         {
-            _spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = false; 
         }
-
         //if the character is in the air
         if (!_isGrounded)
         {
-            if (_input.DirX < 0)
+            if (_directionX == -1)
             {
                 _spriteRenderer.flipX = true;
             }

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 730281982065461157}
   - component: {fileID: 2387480351017159015}
   - component: {fileID: 4601331450627169076}
+  - component: {fileID: 7350679272516264336}
+  - component: {fileID: 961829969260450788}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -297,6 +299,35 @@ MonoBehaviour:
   speedScale: 6
   OverrideVelocity: {x: 0, y: 0}
   UseOverrideVelocity: 0
+--- !u!114 &7350679272516264336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323136301055927831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc90e860d3e043aab8baf76b6ca6470f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeTime: Infinity
+--- !u!114 &961829969260450788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323136301055927831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766cc94bf56ec40c48e66f5ee22e84f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RPSSprites:
+  - {fileID: 752961098, guid: e24af907eaa934b05960cbdbc3ab45e7, type: 3}
+  - {fileID: 414576438, guid: e24af907eaa934b05960cbdbc3ab45e7, type: 3}
+  - {fileID: 649811995, guid: e24af907eaa934b05960cbdbc3ab45e7, type: 3}
 --- !u!1 &3675085099310339450
 GameObject:
   m_ObjectHideFlags: 0
