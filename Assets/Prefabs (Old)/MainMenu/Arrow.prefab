@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1787940915040938634}
   - component: {fileID: 412132698082403318}
   m_Layer: 0
-  m_Name: PlayerToggle
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
