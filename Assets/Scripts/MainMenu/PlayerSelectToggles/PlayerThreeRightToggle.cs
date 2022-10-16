@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class PlayerThreeRightToggle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject MainMenuManager;
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        MainMenuManager.GetComponent<MainMenuManager>().ShiftPlayerSprite(2, 1);
     }
 }

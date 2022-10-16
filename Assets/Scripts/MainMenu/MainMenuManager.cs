@@ -23,8 +23,10 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject PlayerOneSpriteSelector;
     public GameObject PlayerTwoSpriteSelector;
+    public GameObject PlayerThreeSpriteSelector;
     public GameObject PlayerOneSprite;
     public GameObject PlayerTwoSprite;
+    public GameObject PlayerThreeSprite;
 
     public TMP_Text SelectedStageName;
 
@@ -46,19 +48,7 @@ public class MainMenuManager : MonoBehaviour
     {
         UpdateTimeDisplay();
         UpdateTimeBetweenRoundsDisplay();
-
-        GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
-        GameObject crownChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Crown");
-        GameObject dartChallenge = Resources.Load<GameObject>("Prefabs/Challenge/DartHunt");
-        GameObject snakeChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Snake");
-        GameObject hopperChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Hopper_02");
-
-        GlobalSettingsSingleton.Instance.ScoringSystemPrefab = Resources.Load<GameObject>("Prefabs/ScoringSystem/PointScoringSystem");
-        GlobalSettingsSingleton.Instance.ChallengePrefabs = new List<GameObject> { tagChallenge, crownChallenge, dartChallenge, snakeChallenge, hopperChallenge };
-
-        ShiftPlayerSprite(0, 0);
-        ShiftPlayerSprite(1, 0);
-        ShiftSelectedStage(0);
+        ResetStageAndPlayers();
     }
 
     public void IncrementTime()
@@ -126,13 +116,23 @@ public class MainMenuManager : MonoBehaviour
         GlobalSettingsSingleton.Instance.ShiftPlayerSprite(playerID, shift);
         PlayerOneSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[0].spriteColor;
         PlayerTwoSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
+        PlayerThreeSprite.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[2].spriteColor;
         PlayerOneSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[0].spriteColor;
         PlayerTwoSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[1].spriteColor;
+        PlayerThreeSpriteSelector.GetComponent<SpriteRenderer>().color = GlobalSettingsSingleton.Instance.PlayerData[2].spriteColor;
     }
 
     public void ShiftSelectedStage(int shift)
     {
         GlobalSettingsSingleton.Instance.ShiftStage(shift);
         SelectedStageName.text = GlobalSettingsSingleton.Instance.StageName;
+    }
+
+    private void ResetStageAndPlayers()
+    {
+        ShiftPlayerSprite(0, 0);
+        ShiftPlayerSprite(1, 0);
+        ShiftPlayerSprite(2, 0);
+        ShiftSelectedStage(0);
     }
 }
