@@ -84,6 +84,8 @@ public class GlobalSettingsSingleton : MonoBehaviour
             testPlayer3Data.headSprite = null;
             testPlayer3Data.spriteColor = PossibleColors[PlayerIDToColorIndex[2]];
 
+            NumPlayers = 3;
+
             GlobalSettingsSingleton.Instance.PlayerData = new List<PlayerData> { testPlayerData, testPlayer2Data, testPlayer3Data };
 
             GameObject tagChallenge = Resources.Load<GameObject>("Prefabs/Challenge/Tag");
@@ -129,5 +131,33 @@ public class GlobalSettingsSingleton : MonoBehaviour
         SelectedStageIndex = SelectedStageIndex % PossibleStages.Length;
         GlobalSettingsSingleton.Instance.StagePrefab = Resources.Load<GameObject>(("Prefabs/Stages/" + PossibleStages[SelectedStageIndex]));
         StageName = PossibleStageNames[SelectedStageIndex];
+    }
+
+    public void AddPlayerThree()
+    {
+        if (NumPlayers == 3)
+        {
+            return;
+        }
+
+        NumPlayers = 3;
+        PlayerData testPlayer3Data = new PlayerData();
+        testPlayer3Data.playerName = "Player3";
+        testPlayer3Data.playerID = 2;
+        testPlayer3Data.playerInputPrefab = Resources.Load<GameObject>("Prefabs/Player/Input/CoopMiddlePlayerInput");
+        testPlayer3Data.headSprite = null;
+        testPlayer3Data.spriteColor = PossibleColors[PlayerIDToColorIndex[2]];
+        GlobalSettingsSingleton.Instance.PlayerData.Add(testPlayer3Data);
+    }
+
+    public void RemovePlayerThree()
+    {
+        if (NumPlayers == 2)
+        {
+            return;
+        }
+
+        NumPlayers = 2;
+        PlayerData.RemoveAt(2);
     }
 }

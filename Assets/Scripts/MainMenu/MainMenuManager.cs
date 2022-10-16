@@ -30,6 +30,10 @@ public class MainMenuManager : MonoBehaviour
 
     public TMP_Text SelectedStageName;
 
+    public GameObject PlayerThree;
+    public GameObject RemovePlayerThreeButton;
+    public GameObject AddPlayerThreeButton;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -134,5 +138,23 @@ public class MainMenuManager : MonoBehaviour
         ShiftPlayerSprite(1, 0);
         ShiftPlayerSprite(2, 0);
         ShiftSelectedStage(0);
+    }
+
+    public void AddPlayerThree()
+    {
+        PlayerThree.SetActive(true);
+        AddPlayerThreeButton.SetActive(false);
+        RemovePlayerThreeButton.SetActive(true);
+        PlayerThreeSprite.SetActive(true);
+        GlobalSettingsSingleton.Instance.AddPlayerThree();
+    }
+
+    public void RemovePlayerThree()
+    {
+        PlayerThree.SetActive(false);
+        RemovePlayerThreeButton.SetActive(false);
+        AddPlayerThreeButton.SetActive(true);
+        PlayerThreeSprite.SetActive(false);
+        GlobalSettingsSingleton.Instance.RemovePlayerThree();
     }
 }
